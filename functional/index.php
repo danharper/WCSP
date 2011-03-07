@@ -14,30 +14,16 @@ class Site {
 		$this->title = SITE_TITLE;
 		$this->navigation = new Navigation;
 
-		$this->current_page = $this->default_route;
-
-		if (sizeof($_GET) > 0) {
-			$this->current_page = "404";
-		}
+		$this->current_page = (sizeof($_GET) == 0) ? $this->default_route : "404";
 
 		foreach ($this->routes as $get => $page) {
 			if (isset($_GET[$get])) {
 				$this->current_page = $page;
-				echo "hey from the " . $page . " page.<br>";
-				// load $page view
 				break;
 			}
 		}
 
-		if ($this->current_page == 404) {
-			echo "404";
-			// load 404 view
-		}
-
-		if ($this->current_page == $this->default_route) {
-			echo "this is the home page!";
-			// load home view
-		}
+		require ('pages/' . $this->current_page . '.php');
 	}
 
 	function set_title($title) {
