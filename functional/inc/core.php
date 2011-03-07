@@ -11,4 +11,13 @@ define('DB_NAME', 'webcw');
 // Root Path
 define ('ROOT',  dirname($_SERVER['SCRIPT_NAME']));
 
+// Routes
+$this->default_route = "home";
+$this->routes = array(
+	// GET string => Page to load
+	"cat" => "category",
+	"product" => "product",
+	"basket" => "basket"
+);
+
 // require ('functions.php');

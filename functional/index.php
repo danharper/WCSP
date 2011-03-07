@@ -1,35 +1,42 @@
 <?php
-include ('inc/core.php');
-
 class Site {
 
 	public $db;
 	private $content, $title, $navigation;
 	private $current_page;
 
+	private $default_route, $routes;
+
 	function __construct() {
+		include ('inc/core.php');
 		$this->db = new mysqli (DB_HOST, DB_USER, DB_PASS, DB_NAME); //need to handle $db->connect_error
 		$this->content = "";
 		$this->title = SITE_TITLE;
 		$this->navigation = new Navigation;
 
-		$this->current_page = "home";
+		$this->current_page = $this->default_route;
 
-		if (sizeof($_GET) == 0) {
-			$this->current_page = "home";
-			// home view
+		if (sizeof($_GET) > 0) {
+			$this->current_page = "404";
 		}
-		elseif (isset($_GET['cat'])) {
-			$this->current_page = "category";
-			// category view
+
+		foreach ($this->routes as $get => $page) {
+			if (isset($_GET[$get])) {
+				$this->current_page = $page;
+				echo "hey from the " . $page . " page.<br>";
+				// load $page view
+				break;
+			}
 		}
-		elseif (isset($_GET['product'])) {
-			$this->current_page = "product";
-			// Product view
+
+		if ($this->current_page == 404) {
+			echo "404";
+			// load 404 view
 		}
-		elseif (isset($_GET['basket'])) {
-			$this->current_page = "basket";
-			// Basket view
+
+		if ($this->current_page == $this->default_route) {
+			echo "this is the home page!";
+			// load home view
 		}
 	}
 
