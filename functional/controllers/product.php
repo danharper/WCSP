@@ -1,1 +1,2 @@
-product view
+<?php
+$this->render();

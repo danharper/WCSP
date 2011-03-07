@@ -1,1 +1,2 @@
-category page
+<?php
+$this->render();

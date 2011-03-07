@@ -1,1 +1,2 @@
-basket page
+<?php
+$this->render();

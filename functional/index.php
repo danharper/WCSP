@@ -21,7 +21,7 @@ class Site {
 			}
 		}
 
-		require ('pages/' . $this->current_page . '.php');
+		require ('controllers/' . $this->current_page . '.php');
 	}
 
 	function set_title($title) {
@@ -32,9 +32,10 @@ class Site {
 		$this->content = $content;
 	}
 
-	function render($page) {
+	function render($page = '') {
+		$page = ($page == '') ? $this->current_page : $page;
 		include ('partials/header.php');
-		require ('partials/' . $page . '.php');
+		require ('views/' . $page . '.php');
 		include ('partials/sidebar.php');
 		include ('partials/footer.php');
 	}
