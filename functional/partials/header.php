@@ -3,7 +3,7 @@
 <head> 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><?php echo $this->title; ?></title>
+	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" href="<?php echo ROOT; ?>/static/css/reset.css">
 	<link rel="stylesheet" href="<?php echo ROOT; ?>/static/css/style.css">
 </head> 
@@ -24,7 +24,7 @@
 			</li>
 
 			<?php
-			foreach ($this->navigation->get_items() as $nav) {
+			foreach ($navigation->get_items() as $nav) {
 				$class = (isset($_GET['cat']) && $_GET['cat'] == $nav->id) ? $current : '';
 				echo '<li ' . $class . '>';
 				echo '<a href="' . ROOT . '/?cat=' . $nav->id . '">' . $nav->name . '</a>';

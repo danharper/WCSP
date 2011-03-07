@@ -2,15 +2,18 @@
 class Site {
 
 	public $db;
-	private $content, $title, $navigation;
+	private $payload;
 	private $default_route, $routes, $current_page;
 
 	function __construct() {
 		include ('inc/core.php');
 		$this->db = new mysqli (DB_HOST, DB_USER, DB_PASS, DB_NAME); //need to handle $db->connect_error
-		$this->content = "";
-		$this->title = SITE_TITLE;
-		$this->navigation = new Navigation;
+
+		$this->payload = array(
+			"title" => SITE_TITLE,
+			"navigation" => new Navigation,
+			"content" => ""
+		);
 
 		$this->current_page = (sizeof($_GET) == 0) ? $this->default_route : "404";
 
@@ -25,15 +28,16 @@ class Site {
 	}
 
 	function set_title($title) {
-		$this->title = $title;
+		$this->payload["title"] = $title;
 	}
 
 	function set_content($content) {
-		$this->content = $content;
+		$this->payload["content"] = $content;
 	}
 
 	function render($page = '') {
 		$page = ($page == '') ? $this->current_page : $page;
+		extract($this->payload);
 		include ('partials/header.php');
 		require ('views/' . $page . '.php');
 		include ('partials/sidebar.php');
@@ -41,27 +45,6 @@ class Site {
 	}
 
 };
-
-class Page {
-	private $title;
-	private $content;
-
-	public function set_title($title) {
-		$this->title = $title;
-	}
-
-	public function get_title() {
-		return $this->title;
-	}
-
-	public function set_content($content) {
-		$this->content = $content;
-	}
-
-	public function get_content() {
-		return $this->content;
-	}
-}
 
 class Navigation {
 	private $items;
