@@ -4,7 +4,6 @@ class Database {
 
 	function __construct() {
 		$this->connection = new mysqli (DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		return $this->connection;
 	}
 
 	function query($q) {

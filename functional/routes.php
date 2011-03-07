@@ -1,7 +1,7 @@
 <?php
-$this->default_route = "home";
+self::$default = "home";
 
-$this->routes = array(
+self::$routes = array(
 	// GET string => Page to load
 	"cat" => "category",
 	"product" => "product",

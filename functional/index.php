@@ -8,4 +8,4 @@ function __autoload($class) {
 
 include ('config.php');
 
-$s = new Site;
+new Site;
