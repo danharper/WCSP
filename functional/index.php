@@ -1,4 +1,5 @@
 <?php
+session_start();
 set_include_path('controllers'.PATH_SEPARATOR.'modules'.PATH_SEPARATOR.'core');
 
 function __autoload($class) {
