@@ -9,12 +9,20 @@ class DB {
 		return self::$connection;
 	}
 
+	// Multiple results
 	static function query($q) {
 		return self::connection()->query($q);
 	}
 
+	// Single result
+	static function get($q) {
+		return self::connection()->query($q)->fetch_object();
+	}
+
+	// Multiple results, pre-sorted
 	static function fetch($q) {
 		$result = self::connection()->query($q);
+		$fetch = array();
 		while ($row = $result->fetch_object()) {
 			$fetch[] = $row;
 		}
