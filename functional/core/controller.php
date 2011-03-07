@@ -18,13 +18,31 @@ class Controller {
 		$this->payload[$key] = $value;
 	}
 
-	function render($page = '') {
-		$page = ($page == '') ? Router::$current_page : $page;
+	function redirect($route = '', $action = '') {
+		$route = ($route == '') ? Router::$default['route'] : $route;
+		$action = ($action == '') ? Router::$default['action'] : $action;
+		header('Location: '. ROOT .'/?route='. $route .'&action='. $action);
+		die();
+	}
+
+	function render($route = '', $action = '') {
+		$route = ($route == '') ? Router::$route : $route;
+		$action = ($action == '') ? Router::$action : $action;
+		$id = Router::$id;
+
 		extract($this->payload);
+
 		include ('partials/header.php');
-		require ('views/' . $page . '.php');
+		echo "$route#$action($id)<br>";
+		require ('views/'. $route .'/'. $action .'.php');
 		include ('partials/sidebar.php');
 		include ('partials/footer.php');
+	}
+
+	function link_to($route, $action = 'index', $id = '') {
+		$link = ROOT . '/?route='. $route .'&action='. $action;
+		if ($id != '') $link .= '&id='. $id;
+		return $link;
 	}
 
 }

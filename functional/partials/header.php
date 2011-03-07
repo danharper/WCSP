@@ -27,7 +27,7 @@
 			foreach ($navigation->get_items() as $nav) {
 				$class = ($nav->current) ? $current : '';
 				echo '<li ' . $class . '>';
-				echo '<a href="' . ROOT . '/?cat=' . $nav->id . '" title="' . $nav->title . '">' . $nav->name . '</a>';
+				echo '<a href="'. $this->link_to('category', 'show', $nav->id) .'" title="'. $nav->title .'">'. $nav->name .'</a>';
 				echo '</li>';
 			}
 			?>
