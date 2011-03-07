@@ -6,7 +6,7 @@ class Home extends Controller {
 	private $title;
 
 	function __construct() {
-		$this->set_title("Latest Products");
+		// $this->set_title("Latest Products");
 	}
 
 }
