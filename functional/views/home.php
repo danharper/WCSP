@@ -1,1 +1,4 @@
-<p>home page.</p>
+<?php
+foreach ($products as $p) {
+	echo '<h3>' . $p->title . '</h3>';
+}

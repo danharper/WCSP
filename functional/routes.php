@@ -1,9 +1,9 @@
 <?php
-self::$default = "home";
+self::$default = "Home";
 
 self::$routes = array(
 	// GET string => Page to load
-	"cat" => "category",
-	"product" => "product",
-	"basket" => "basket"
+	"cat" => "Category",
+	"product" => "Product",
+	"basket" => "Basket"
 );

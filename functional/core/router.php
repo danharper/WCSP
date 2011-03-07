@@ -6,7 +6,7 @@ class Router {
 		include ('routes.php');
 
 		self::$is_home = (sizeof($_GET) == 0) ? true : false;
-		self::$current_page = (self::$is_home) ? self::$default : "404";
+		self::$current_page = (self::$is_home) ? self::$default : "fourohfour";
 
 		foreach (self::$routes as $get => $page) {
 			if (isset($_GET[$get])) {
