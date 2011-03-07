@@ -3,9 +3,7 @@ class Site {
 
 	public $db;
 	private $content, $title, $navigation;
-	private $current_page;
-
-	private $default_route, $routes;
+	private $default_route, $routes, $current_page;
 
 	function __construct() {
 		include ('inc/core.php');
