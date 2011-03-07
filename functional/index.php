@@ -3,7 +3,7 @@ class Site {
 
 	public $db;
 	private $payload;
-	private $default_route, $routes, $current_page;
+	private $default_route, $routes, $current_page, $is_home;
 
 	function __construct() {
 		include ('inc/core.php');
@@ -15,7 +15,10 @@ class Site {
 			"content" => ""
 		);
 
-		$this->current_page = (sizeof($_GET) == 0) ? $this->default_route : "404";
+		// $this->current_page = (sizeof($_GET) == 0) ? $this->default_route : "404";
+
+		$this->is_home = (sizeof($_GET) == 0) ? true : false;
+		$this->current_page = ($this->is_home) ? $this->default_route : "404";
 
 		foreach ($this->routes as $get => $page) {
 			if (isset($_GET[$get])) {
@@ -28,11 +31,15 @@ class Site {
 	}
 
 	function set_title($title) {
-		$this->payload["title"] = $title;
+		$this->payload["title"] = $title . ' | ' . SITE_TITLE;
 	}
 
 	function set_content($content) {
 		$this->payload["content"] = $content;
+	}
+
+	function add_payload($key, $value) {
+		$this->payload[$key] = $value;
 	}
 
 	function render($page = '') {
@@ -46,6 +53,17 @@ class Site {
 
 };
 
+class Controller {
+	private $payload;
+
+	function __construct() {
+		$payload = array(
+			"title" => SITE_TITLE,
+			"navigation" => new Navigation
+		);
+	}
+}
+
 class Navigation {
 	private $items;
 
@@ -55,16 +73,36 @@ class Navigation {
 		$db = new Database;
 		$result = $db->query("SELECT * FROM `categories` WHERE `parent_id` IS NULL");
 		while ($row = $result->fetch_object()) {
-			$this->items[] = $row;
+			$item = new NavigationItem;
+			$item->extract($row);
+			$this->items[] = $item;
 		}
-	}
-
-	function add_item($item) {
-		$this->items[] = $item;
 	}
 
 	function get_items() {
 		return $this->items;
+	}
+}
+
+class NavigationItem {
+	public $id, $name, $title, $current;
+
+	function __construct($id = '', $name = '', $title = '') {
+		$this->id = $id;
+		$this->name = $name;
+		$this->title = $title;
+		$this->current = $this->check_if_current();
+	}
+
+	function extract($row) {
+		$this->id = $row->id;
+		$this->name = $row->name;
+		$this->title = $row->title;
+		$this->current = $this->check_if_current();
+	}
+
+	function check_if_current() {
+		return (isset($_GET['cat']) && $_GET['cat'] == $this->id) ? true : false;
 	}
 }
 

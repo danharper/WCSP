@@ -17,7 +17,7 @@
 		<ul>
 			<?php
 			$current = 'class="current"';
-			$class = ($this->current_page = "home") ? $current : ''; ?>
+			$class = ($this->current_page == "home") ? $current : ''; ?>
 
 			<li <?php echo $class; ?>>
 				<a href="<?php echo ROOT; ?>">Home</a>
@@ -25,9 +25,9 @@
 
 			<?php
 			foreach ($navigation->get_items() as $nav) {
-				$class = (isset($_GET['cat']) && $_GET['cat'] == $nav->id) ? $current : '';
+				$class = ($nav->current) ? $current : '';
 				echo '<li ' . $class . '>';
-				echo '<a href="' . ROOT . '/?cat=' . $nav->id . '">' . $nav->name . '</a>';
+				echo '<a href="' . ROOT . '/?cat=' . $nav->id . '" title="' . $nav->title . '">' . $nav->name . '</a>';
 				echo '</li>';
 			}
 			?>

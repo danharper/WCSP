@@ -19,5 +19,3 @@ $this->routes = array(
 	"product" => "product",
 	"basket" => "basket"
 );
-
-// require ('functions.php');
