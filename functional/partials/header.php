@@ -17,7 +17,7 @@
 		<ul>
 			<?php
 			$current = 'class="current"';
-			$class = ($this->current_page == "home") ? $current : ''; ?>
+			$class = ($this->is_home) ? $current : ''; ?>
 
 			<li <?php echo $class; ?>>
 				<a href="<?php echo ROOT; ?>">Home</a>

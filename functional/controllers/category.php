@@ -7,13 +7,11 @@ class Category extends Controller {
 	}
 
 	function index() {
-		// redirect to home
-		$this->redirect();
+		$this->redirect(); // redirect to home
 	}
 
 	function show($id = '') {
-		// no id? go home!
-		if ($id == '') $this->redirect();
+		if ($id == '') $this->redirect(); // no id? go home!
 		
 		$products = DB::fetch('SELECT * FROM `products` WHERE `category_id` = '. $id);
 		$this->add_payload("products", $products);

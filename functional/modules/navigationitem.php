@@ -9,6 +9,7 @@ class NavigationItem {
 		$this->current = (
 			Router::$route == "category" &&
 			Router::$action == "show" &&
-			Router::$id == $row->id ) ? true : false;
+			Router::$id == $row->id
+		) ? true : false;
 	}
 }

@@ -1,13 +1,6 @@
 <?php
-// self::$default = "Home";
+// The default route and action to display
 self::$default = array(
 	"route" => "product",
 	"action" => "index"
 );
-
-// self::$routes = array(
-	// GET string => Page to load
-	// "cat" => "Category",
-	// "product" => "Product",
-	// "basket" => "Basket"
-// );

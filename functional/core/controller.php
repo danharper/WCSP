@@ -1,13 +1,17 @@
 <?php
 class Controller {
-	protected $payload, $current_page; // used in views
+	protected $payload, $is_home; // used in views
 
 	function __construct() {
 		$this->payload = array(
 			"title" => SITE_TITLE,
 			"navigation" => new Navigation
 		);
-		$this->current_page = Router::$current_page;
+
+		$this->is_home = (
+			Router::$route == Router::$default["route"] &&
+			Router::$action == Router::$default["action"]
+		) ? true : false;
 	}
 
 	function set_title($title) {
@@ -16,6 +20,12 @@ class Controller {
 
 	function add_payload($key, $value) {
 		$this->payload[$key] = $value;
+	}
+
+	function link_to($route, $action = 'index', $id = '') {
+		$link = ROOT . '/?route='. $route .'&action='. $action;
+		if ($id != '') $link .= '&id='. $id;
+		return $link;
 	}
 
 	function redirect($route = '', $action = '') {
@@ -37,12 +47,6 @@ class Controller {
 		require ('views/'. $route .'/'. $action .'.php');
 		include ('partials/sidebar.php');
 		include ('partials/footer.php');
-	}
-
-	function link_to($route, $action = 'index', $id = '') {
-		$link = ROOT . '/?route='. $route .'&action='. $action;
-		if ($id != '') $link .= '&id='. $id;
-		return $link;
 	}
 
 }
