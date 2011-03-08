@@ -9,4 +9,4 @@ function __autoload($class) {
 
 include ('config.php');
 
-new Site;
+new Router;
