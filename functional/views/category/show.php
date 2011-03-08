@@ -10,7 +10,5 @@ if ($products) {
 }
 else {
 	echo "nothing";
-}
-	
-	?>
+} ?>
 </ol>

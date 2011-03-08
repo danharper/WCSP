@@ -1,40 +1,41 @@
 <?php
 class Basket extends Controller {
 	private $basket;
-	
+
+
 	function __construct() {
 		parent::__construct();
 		$this->set_title("Basket");
-
 		$this->basket = (isset($_SESSION['basket'])) ? $_SESSION['basket'] : NULL;
 		$this->add_payload("basket", $this->basket);
-
-		if (isset($_GET['type']) && $_GET['type'] == 'update') {
-			$this->update();
-		}
-		else {
-			$this->index();
-		}
-
-		$this->render();
 	}
 
 	function index() {
-		$new = array(
-			array(
-				"id" => 2,
-				"quantity" => 1
-			),
-			array(
-				"id" => 1,
-				"quantity" => 3
-			)
-		);
-
+		// show items in Basket
+		$this->render();
 	}
 
-	function update() {
-		
+	function create() {
+		// add a new/update an item
+		if ($_POST['id'] == '') $this->redirect('basket');
+		$id = $_POST['id'];
+		$quantity = ($_POST['quantity'] > 0) ? $_POST['quantity'] : 1;
+		$_SESSION['basket'][$id] = $quantity;
+		$this->redirect('basket');
+	}
+
+	function delete() {
+		// remove an item
+		if ($_POST['id'] == '') $this->redirect('basket');
+		$id = $_POST['id'];
+		unset($_SESSION['basket'][$id]);
+		$this->redirect('basket');
+	}
+
+	function destroy() {
+		// clear basket
+		session_destroy();
+		$this->redirect('basket');
 	}
 
 }
