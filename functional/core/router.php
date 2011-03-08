@@ -1,6 +1,5 @@
 <?php
 class Router {
-	// public static $default, $routes, $current_page, $is_home; // shouldn't be using...
 	public static $default, $route, $action, $id;
 
 	function __construct() {
