@@ -6,6 +6,9 @@ class NavigationItem {
 		$this->id = $row->id;
 		$this->name = $row->name;
 		$this->title = $row->title;
-		$this->current = (isset($_GET['cat']) && $_GET['cat'] == $this->id) ? true : false;
+		$this->current = (
+			Router::$route == "category" &&
+			Router::$action == "show" &&
+			Router::$id == $row->id ) ? true : false;
 	}
 }
