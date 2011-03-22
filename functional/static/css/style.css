@@ -124,6 +124,11 @@ h1 {
 	text-align: center;
 }
 
+h1 a:link, h1 a:visited {
+	color: #444;
+	text-decoration: none;
+}
+
 h2 {
 	font-size: 25px;
 	margin-bottom: 15px;
@@ -131,4 +136,18 @@ h2 {
 
 p {
 	margin: 0 0 10px;
+}
+
+#debug {
+	background: #333;
+	color: #eee;
+	letter-spacing: 1px;
+	margin: 0 -30px;
+	padding: 5px 10px;
+}
+
+#debug span {
+	color: #ddd;
+	text-transform: uppercase;
+	font-size: 0.7em;
 }

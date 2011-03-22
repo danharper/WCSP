@@ -1,19 +1,9 @@
 <?php
 class Basket extends Controller {
-	private $basket;
-
-	////////// An example: //////////
-	// $basket[$product_id] = array(
-	//   "name" => "Bowl of Rice",
-	//   "quantity" => "2",
-	//   "price" => "12.99"
-	// );
 
 	function __construct() {
 		parent::__construct();
 		$this->set_title("Basket");
-		$this->basket = (isset($_SESSION['basket'])) ? $_SESSION['basket'] : NULL;
-		$this->add_payload("basket", $this->basket);
 	}
 
 	function index() {
@@ -26,12 +16,12 @@ class Basket extends Controller {
 		if ($_POST['id'] == '') $this->redirect('basket');
 		$id = $_POST['id'];
 
-		$product = array(
-			"name" => $_POST['name'],
-			"quantity" => ($_POST['quantity'] > 0) ? $_POST['quantity'] : 1,
-			"price" => $_POST['price']
+		$this->cart->add(
+			$id,
+			$_POST['name'],
+			$_POST['price'],
+			$_POST['quantity']
 		);
-		$_SESSION['basket'][$id] = $product;
 
 		$this->redirect('basket');
 	}
@@ -40,7 +30,7 @@ class Basket extends Controller {
 		if ($_POST['id'] == '') $this->redirect('basket');
 		$id = $_POST['id'];
 		$quantity = $_POST['quantity'];
-		$_SESSION['basket'][$id]['quantity'] = $quantity;
+		$this->cart->update($id, $quantity);
 		$this->redirect('basket');
 	}
 
@@ -48,14 +38,13 @@ class Basket extends Controller {
 		// remove an item
 		if ($_POST['id'] == '') $this->redirect('basket');
 		$id = $_POST['id'];
-		unset($_SESSION['basket'][$id]);
+		$this->cart->remove($id);
 		$this->redirect('basket');
 	}
 
 	function destroy() {
 		// clear basket
-		session_destroy();
-		$this->redirect('basket');
+		$this->cart->clear();
 	}
 
 }

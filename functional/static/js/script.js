@@ -27,15 +27,15 @@ $(function() {
 	
 	
 	// lul wtf
-	h1 = document.getElementsByTagName("h1")[0];
-	h1orig = h1.innerHTML;
-	$("body > header").hover(
-		function () {
-			h1.innerHTML = "☞ " + h1orig + " ☜";
-		},
-		function () {
-			h1.innerHTML = h1orig;
-		}
-	);
+	// h1 = document.getElementsByTagName("h1")[0];
+	// h1orig = h1.innerHTML;
+	// $("body > header").hover(
+		// function () {
+			// h1.innerHTML = "☞ " + h1orig + " ☜";
+		// },
+		// function () {
+			// h1.innerHTML = h1orig;
+		// }
+	// );
 	
 });

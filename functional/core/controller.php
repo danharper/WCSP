@@ -1,12 +1,15 @@
 <?php
 class Controller {
+	protected $cart;
 	protected $payload, $is_home; // used in views
 
 	function __construct() {
+		$this->cart = new Cart;
+
 		$this->payload = array(
 			"title" => SITE_TITLE,
 			"navigation" => new Navigation,
-			"cart" => new Cart
+			"cart" => $this->cart
 		);
 
 		$this->is_home = (
@@ -43,8 +46,8 @@ class Controller {
 
 		extract($this->payload);
 
+		echo "<div id='debug'><span>Debug Bar:</span> $route#$action($id)</div>";
 		include ('partials/header.php');
-		echo "$route#$action($id)<br>";
 		require ('views/'. $route .'/'. $action .'.php');
 		include ('partials/sidebar.php');
 		include ('partials/footer.php');

@@ -10,11 +10,24 @@ class Cart {
 			$_SESSION['cart'] = array();
 			$this->cart =& $_SESSION['cart'];
 		}
-		echo '<pre>' . print_r($this->cart) . '</pre>';
 	}
 
+	function products() {
+		return $this->cart;
+	}
+
+	// just number of products
 	function size() {
 		return sizeof($this->cart);
+	}
+
+	// products * quantity
+	function total_size() {
+		$total = 0;
+		foreach ($this->cart as $item) {
+			$total += $item['quantity'];
+		}
+		return $total;
 	}
 
 	function total_price() {
@@ -25,7 +38,6 @@ class Cart {
 		}
 		return $total;
 	}
-		
 
 	function get($id) {
 		return $cart[$id];
@@ -41,7 +53,12 @@ class Cart {
 
 	function update($id, $quantity) {
 		if (isset($this->cart[$id])) {
-			$this->cart[$id]['quantity'] = $quantity;
+			if ($quantity > 0) {
+				$this->cart[$id]['quantity'] = $quantity;
+			}
+			else {
+				$this->remove($id);
+			}
 			return true;
 		}
 		return false;

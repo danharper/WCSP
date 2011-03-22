@@ -10,7 +10,7 @@
 <body>
 
 	<header>
-		<h1>The Super Mega <b>Awesome</b> Shopping Site</h1>
+		<h1><a href="<?php echo ROOT; ?>">The Super Mega <b>Awesome</b> Shopping Site</a></h1>
 	</header>
 	
 	<nav>

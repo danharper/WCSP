@@ -1,6 +1,6 @@
 <?php
-if ($basket) {
-	foreach ($basket as $id => $product) { ?>
+if ($cart->size() > 0) {
+	foreach ($cart->products() as $id => $product) { ?>
 		<p>
 			Product: <?php echo $product['name']; ?> (#<?php echo $id; ?>) - <?php echo $product['quantity']; ?>
 			<form action="<?php echo $this->link_to('basket', 'update'); ?>" method="post">
@@ -18,6 +18,7 @@ if ($basket) {
 		<?php
 	}
 }
-else {
-	echo "Nothing here dude!";
+else { ?>
+	<p>Dude&hellip; there's nothing in your basket. Add something!</p>
+	<?php
 }
