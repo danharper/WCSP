@@ -5,7 +5,8 @@ class Controller {
 	function __construct() {
 		$this->payload = array(
 			"title" => SITE_TITLE,
-			"navigation" => new Navigation
+			"navigation" => new Navigation,
+			"cart" => new Cart
 		);
 
 		$this->is_home = (

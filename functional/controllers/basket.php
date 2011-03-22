@@ -21,7 +21,7 @@ class Basket extends Controller {
 		$this->render();
 	}
 
-	function create() {
+	function add() {
 		// add a new/update an item
 		if ($_POST['id'] == '') $this->redirect('basket');
 		$id = $_POST['id'];

@@ -14,7 +14,7 @@ if ($basket) {
 				<input type="submit" value="remove">
 			</form>
 			<br>
-		</p>
+		</p><hr>
 		<?php
 	}
 }
