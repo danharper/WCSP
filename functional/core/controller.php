@@ -46,7 +46,7 @@ class Controller {
 
 		extract($this->payload);
 
-		// echo "<div id='debug'><span>Debug Bar:</span> $route#$action($id)</div>";
+		echo "<div id='debug'><span>Debug Bar:</span> $route#$action($id)</div>";
 		include ('partials/header.php');
 		require ('views/'. $route .'/'. $action .'.php');
 		include ('partials/sidebar.php');

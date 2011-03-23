@@ -2,7 +2,7 @@ $(function() {
 	
 	var html, section, aside, articles, h1, h1orig;
 	
-	//window.onmousemove = function () { alert("LOL") };
+	console.log("we're working!");
 	
 	// js class
 	html = document.documentElement;
@@ -13,17 +13,27 @@ $(function() {
 	aside = $("body > aside")[0];
 	aside.style.height = section.offsetHeight + "px";
 	
-	
-	// expand that shit
-	articles = $("body > section article");
+	articles = $(".products article a");
 	$(articles).hover(
-		function () {
-			this.className += " expand";
+		function() {
+			$(this).children("p").stop(true, true).fadeIn();
+			console.log(pa);
 		},
-		function () {
-			this.className = this.className.replace(/\bexpand\b/,'');
+		function() {
+			$(this).children("p").stop(true, true).fadeOut();
 		}
 	);
+	
+	// expand that shit
+	// articles = $("body > section article");
+	// $(articles).hover(
+		// function () {
+			// this.className += " expand";
+		// },
+		// function () {
+			// this.className = this.className.replace(/\bexpand\b/,'');
+		// }
+	// );
 	
 	
 	// lul wtf

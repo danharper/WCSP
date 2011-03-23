@@ -10,7 +10,7 @@
 			<p>You currently have no items in your shopping basket.</p>
 			<?php
 		} ?>
-		<p><a href="<?php echo $this->link_to('basket'); ?>">View Basket</a></p>
+		<p class="view"><a href="<?php echo $this->link_to('basket'); ?>">View Basket</a></p>
 	</section>
 	<form id="search">
 		<p><input type="search" placeholder="search&hellip;"></p>

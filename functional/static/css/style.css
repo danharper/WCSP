@@ -6,8 +6,8 @@ body {
 	border: 3px double #eee;
 	border-top: none;
 	margin: 0 auto 35px;
-	padding: 0 30px;
-	width: 900px;
+	padding: 0;
+	width: 957px; /* total 960 */
 	overflow: hidden;
 }
 
@@ -48,39 +48,74 @@ nav .current a {
 
 section#main {
 	float: left;
-	padding: 0 20px 25px 0;
-	width: 680px;
+	margin: 0 20px;
+	padding: 0;
+	width: 700px;
 }
 
-article {
-	width: 330px;
+section.products article {
+	width: 220px;
+	display: block;
 	float: left;
-	margin: 0 10px 10px 0;
-	overflow: hidden;
+	margin: 0 20px 20px 0;
+	position: relative;
 }
 
-/* remove these soon */
-article { background: #eee; }
-article img { display: none; }
-article.expand img { display: block; }
-/* remove these soon */
-
-article.expand {
-	width: 670px;
+section.products article:nth-of-type(3n) {
 	margin-right: 0;
+}
+
+section.products article img {
+	border: 10px solid #f0f0f0;
+	margin: 0 0 5px;
+}
+
+section.products article h2 {
+	background: rgba(0,0,0,0.5);
+	display: block;
+	color: #eee;
+	text-shadow: 1px 1px 2px black;
+	font-size: 15px;
+	position: absolute;
+	bottom: 15px;
+	right: 10px;
+	width: 190px;
+	padding: 3px 5px;
+	margin: 0;
+}
+
+section.products article a:link, section.products article a:visited {
+	color: #eee;
+	text-decoration: none;
+}
+
+section.products article p {
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	text-shadow: 1px 1px 2px black;
+	font-size: 20px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 3px 5px;
+	margin: 0;
+}
+
+.js section.products article p {
+	display: none;
 }
 
 aside {
 	float: right;
-	width: 157px;
+	width: 174px;
 	border-left: 3px double #eee;
-	margin: -26px 0 0;
 	padding: 26px 20px 0;
+	margin: -26px 0 0;
 }
 
 #search input {
 	margin-top: 15px;
-	width: 177px;
+	width: 174px;
 }
 
 #cart {
@@ -89,18 +124,21 @@ aside {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-size: 9px;
-	padding: 5px 15px;
-	margin: 0 -50px 0 -20px;
+	padding: 10px 15px;
+	margin: 0 -20px;
 }
 
 #cart .items, #cart .price {
 	font-weight: bold;
 	font-size: 14px;
-	margin: 0 -1px;
 }
 
 #cart .price {
 	color: #bd526d;
+}
+
+#cart .view {
+	margin: 0 0 3px;
 }
 
 footer {
@@ -142,7 +180,6 @@ p {
 	background: #333;
 	color: #eee;
 	letter-spacing: 1px;
-	margin: 0 -30px;
 	padding: 5px 10px;
 }
 

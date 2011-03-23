@@ -1,13 +1,12 @@
-<ol>
-<?php
-foreach ($products as $p) {
-	echo '<li>';
-	$image = $images[$p->id];
-	echo '<h2><a href="'. $this->link_to('product', 'show', $p->id) .'">'. $p->title .'</a></h2>';
-	echo '<p>'. nl2br($p->description) .'</p>';
-	echo '<p><em>£'. $p->price .'</em></p>';
-	echo '<img src="'.ROOT.'/static/productimages/'.$p->id.'/'. $image->name .'" alt="'. $image->alt .'" height="150">';
-	echo '<hr>';
-	echo '</li>';
-} ?>
-</ol>
+<section class="products">
+	<?php foreach ($products as $p) { $image = $images[$p->id];
+		$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name; ?>
+		<article>
+			<a href="<?php echo $this->link_to('product', 'show', $p->id); ?>">
+				<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
+				<p>£<?php echo $p->price; ?></p>
+				<h2><?php echo $p->title; ?></h2>
+			</a>
+		</article>
+	<?php } ?>
+</section>
