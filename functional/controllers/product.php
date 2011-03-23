@@ -21,7 +21,9 @@ class Product extends Controller {
 	function show() {
 		$id = $_GET['id'];
 		$product = DB::get('SELECT * FROM `products` WHERE `id` = '. $id);
+		$images = $this->get_all_images($product->id);
 		$this->add_payload("product", $product);
+		$this->add_payload("images", $images);
 		$this->render();
 	}
 

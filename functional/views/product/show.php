@@ -2,6 +2,10 @@
 <p><?php echo nl2br($product->description); ?></p>
 <p><em>£<?php echo $product->price; ?></em></p>
 
+<?php foreach ($images as $image) {
+echo '<img src="'.ROOT.'/static/productimages/'.$product->id.'/'.$image->name.'" alt="'.$image->alt.'" height="150">';
+} ?>
+
 <form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post">
 	<input type="hidden" name="id" value="<?php echo $product->id; ?>">
 	<input type="hidden" name="name" value="<?php echo $product->title; ?>">
