@@ -44,6 +44,8 @@ class Cart {
 	}
 
 	function add($id, $name, $price, $quantity) {
+		if (isset($this->cart[$id]))
+			$quantity += $this->cart[$id]['quantity'];
 		$this->cart[$id] = array(
 			'name' => $name,
 			'price' => $price,
