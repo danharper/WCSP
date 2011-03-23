@@ -27,12 +27,5 @@ class Product extends Controller {
 		$this->render();
 	}
 
-	private function get_all_images($id) {
-		return DB::fetch('SELECT * FROM `productimages` WHERE `product_id` = '. $id);
-	}
-
-	private function get_main_image($id) {
-		return DB::get('SELECT * FROM `productimages` WHERE `product_id` = '. $id .' AND `main` = 1 LIMIT 1');
-	}
 
 }

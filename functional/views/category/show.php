@@ -1,14 +1,20 @@
 <ol>
 <?php
-if ($products) {
-	foreach ($products as $p) {
-		echo '<h2><a href="'. $this->link_to('product', 'show', $p->id) .'">' . $p->title . '</a></h2>';
-		echo '<p>'. nl2br($p->description) .'</p>';
-		echo '<p><em>£'. $p->price .'</em></p>';
-		echo '<hr>';
-	}
+if ($products) { ?>
+	<section class="products">
+		<?php foreach ($products as $p) { $image = $images[$p->id];
+			$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name;
+			$payload = array(
+				'product' => $p,
+				'image_url' => $image_url,
+				'image' => $image
+			);
+			$this->partial('products', $payload);
+		} ?>
+	</section>
+	<?php
 }
-else {
-	echo "nothing";
+else { ?>
+	<p>This category has no products.</p>
+	<?php
 } ?>
-</ol>

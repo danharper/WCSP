@@ -53,4 +53,18 @@ class Controller {
 		include ('partials/footer.php');
 	}
 
+	function partial($file, $payload = '') {
+		if (isset($payload))
+			extract($payload);
+		require 'partials/'. $file .'.php';
+	}
+
+	protected function get_all_images($id) {
+		return DB::fetch('SELECT * FROM `productimages` WHERE `product_id` = '. $id);
+	}
+
+	protected function get_main_image($id) {
+		return DB::get('SELECT * FROM `productimages` WHERE `product_id` = '. $id .' AND `main` = 1 LIMIT 1');
+	}
+
 }
