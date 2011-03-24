@@ -105,6 +105,50 @@ section.products article p {
 	display: none;
 }
 
+.product .images {
+	background: #f0f0f0;
+	padding: 10px 10px 0 10px;
+	width: 200px;
+	overflow: auto;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+.product .images img {
+	width: 60px;
+	margin: 0 10px 10px 0;
+	float: left;
+}
+
+.product .images img:first-child {
+	width: 200px;
+}
+
+.product .images img:nth-child(3n+1) {
+	margin-right: 0;
+}
+
+.product .price {
+	float: right;
+	color: #555;
+	font-family: Georgia;
+	font-size: 20px;
+	letter-spacing: 2px;
+	margin-top: 5px;
+}
+
+.product form {
+	display: block;
+	border-top: 3px double #eee;
+	margin: 30px -20px 0 0;
+	padding: 15px 0 0;
+}
+
+.product form h3 {
+	display: inline;
+	margin: 0 5px 0 0;
+}
+
 aside {
 	float: right;
 	width: 174px;
