@@ -1,0 +1,31 @@
+<?php
+class Product extends Controller {
+	
+	function __construct() {
+		parent::__construct();
+		$this->set_title("Product");
+	}
+
+	function index() {
+		$this->set_title("Latest Products");
+		$products = DB::fetch('SELECT * FROM `products`');
+		$images = array();
+		foreach ($products as $p) {
+			$images[$p->id] = $this->get_main_image($p->id);
+		}
+		$this->add_payload("products", $products);
+		$this->add_payload("images", $images);
+		$this->render();
+	}
+
+	function show() {
+		$id = $_GET['id'];
+		$product = DB::get('SELECT * FROM `products` WHERE `id` = '. $id);
+		$images = $this->get_all_images($product->id);
+		$this->add_payload("product", $product);
+		$this->add_payload("images", $images);
+		$this->render();
+	}
+
+
+}
