@@ -8,6 +8,11 @@ class Basket extends Controller {
 
 	function index() {
 		// show items in Basket
+		$images = array();
+		foreach ($this->cart->products() as $id => $product) {
+			$images[$id] = $this->get_main_image($id);
+		}
+		$this->add_payload("images", $images);
 		$this->render();
 	}
 
@@ -31,6 +36,27 @@ class Basket extends Controller {
 		$id = $_POST['id'];
 		$quantity = $_POST['quantity'];
 		$this->cart->update($id, $quantity);
+		$this->redirect('basket');
+	}
+
+	function increase() {
+		if ($_GET['id'] == '') $this->redirect('basket');
+		$id = $_GET['id'];
+		$item = $this->cart->get($id);
+		$quantity = $item['quantity'] + 1;
+		$this->cart->update($id, $quantity);
+		$this->redirect('basket');
+	}
+
+	function decrease() {
+		if ($_GET['id'] == '') $this->redirect('basket');
+		$id = $_GET['id'];
+		$item = $this->cart->get($id);
+		$quantity = $item['quantity'] - 1;
+		if ($quantity > 0)
+			$this->cart->update($id, $quantity);
+		else
+			$this->cart->remove($id);
 		$this->redirect('basket');
 	}
 

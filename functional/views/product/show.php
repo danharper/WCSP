@@ -23,4 +23,5 @@
 		<input type="hidden" name="price" value="<?php echo $product->price; ?>">
 		<input type="submit">
 	</form>
+	<div class="clear">&nbsp;</div>
 </article>

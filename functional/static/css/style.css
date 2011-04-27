@@ -1,5 +1,7 @@
 html { background: #fafafa; }
 
+.clear { clear: both; }
+
 body {
 	background: #fff;
 	-webkit-box-shadow: 0 0 15px #eee;
@@ -51,6 +53,7 @@ section#main {
 	margin: 0 20px;
 	padding: 0;
 	width: 700px;
+	/* overflow: hidden; */
 }
 
 section.products article {
@@ -147,6 +150,72 @@ section.products article p {
 .product form h3 {
 	display: inline;
 	margin: 0 5px 0 0;
+}
+
+#basket {
+	width: 700px;
+}
+
+#basket th:first-of-type, #basket th:last-of-type {
+	visibility: hidden;
+}
+
+#basket td {
+	border: 1px solid #eee;
+	overflow: hidden;
+}
+
+#basket .img {
+	width: 100px;
+}
+
+.remove {
+	width: 25px;
+}
+
+.name {
+	width: 50%;
+	padding: 0 10px;
+}
+
+tr td {
+	vertical-align: middle;
+}
+
+.price {
+	text-align: center;
+	width: 15%;
+}
+
+#basket .quantity { 
+	width: 15%;
+	text-align: center;
+}
+
+#basket .quantity a {
+	color: #444;
+	text-decoration: none;
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 1px 5px;
+	vertical-align: bottom;
+	margin: 0px 1px 0;
+	display: inline-block;
+}
+
+.quantity input {
+	width: 40px;
+}
+
+#basket .remove {
+	text-align: center;
+}
+
+#basket .remove a {
+	color: darkred;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 aside {

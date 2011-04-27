@@ -40,7 +40,7 @@ class Cart {
 	}
 
 	function get($id) {
-		return $cart[$id];
+		return $this->cart[$id];
 	}
 
 	function add($id, $name, $price, $quantity) {
