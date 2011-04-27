@@ -26,7 +26,12 @@
 							<a href="<?php echo $this->link_to('basket', 'increase', $id); ?>">+</a>
 						</td>
 						<td class="price"><?php echo $product['price'] * $product['quantity']; ?></td>
-						<td class="remove"><a href="<?php echo $this->link_to('basket', 'delete', $id); ?>">x</a></td>
+						<td class="remove">
+							<form action="<?php echo $this->link_to('basket', 'delete'); ?>" method="post">
+								<input type="hidden" name="id" value="<?php echo $id; ?>">
+								<input type="submit" value="x">
+							</form>
+						</td>
 					</tr>
 					<?php
 				} ?>

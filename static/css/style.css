@@ -211,7 +211,9 @@ tr td {
 	text-align: center;
 }
 
-#basket .remove a {
+#basket .remove input {
+	background: none;
+	border: none;
 	color: darkred;
 	font-size: 16px;
 	font-weight: bold;
