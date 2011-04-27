@@ -152,6 +152,14 @@ section.products article p {
 	margin: 0 5px 0 0;
 }
 
+input.lowstock {
+	border: 1px inset red;
+}
+
+span.lowstock {
+	color: red;
+}
+
 #basket {
 	width: 700px;
 }

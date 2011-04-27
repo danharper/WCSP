@@ -21,6 +21,10 @@ class Product extends Controller {
 	function show() {
 		$id = $_GET['id'];
 		$product = DB::get('SELECT * FROM `products` WHERE `id` = '. $id);
+		$product->lowstock = false;
+		if ($product->stock <= 10) {
+			$product->lowstock = true;
+		}
 		$images = $this->get_all_images($product->id);
 		$this->add_payload("product", $product);
 		$this->add_payload("images", $images);

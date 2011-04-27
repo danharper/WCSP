@@ -26,11 +26,20 @@
 
 	<form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post">
 		<h3>Add to Basket:</h3>
-		<input type="text" name="quantity" value="1">
-		<input type="hidden" name="id" value="<?php echo $product->id; ?>">
-		<input type="hidden" name="name" value="<?php echo $product->title; ?>">
-		<input type="hidden" name="price" value="<?php echo $product->price; ?>">
-		<input type="submit">
+		<?php if ($product->stock > 0) { ?>
+			<?php $stock = "";
+			if ($product->lowstock) $stock = 'class="lowstock"'; ?>
+			<input type="text" name="quantity" value="1" <?php echo $stock; ?>>
+			<?php if ($product->lowstock) { ?>
+			<span class="lowstock">Stock is running low!</span>
+			<?php } ?>
+			<input type="hidden" name="id" value="<?php echo $product->id; ?>">
+			<input type="hidden" name="name" value="<?php echo $product->title; ?>">
+			<input type="hidden" name="price" value="<?php echo $product->price; ?>">
+			<input type="submit">
+		<?php } else { ?>
+			<span class="lowstock">Product out of stock.</span>
+		<?php } ?>
 	</form>
 	<div class="clear">&nbsp;</div>
 </article>
