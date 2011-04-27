@@ -123,11 +123,11 @@ section.products article p {
 	float: left;
 }
 
-.product .images img:first-child {
+.product .images figure img {
 	width: 200px;
 }
 
-.product .images img:nth-child(3n+1) {
+.product .images a:nth-child(3n+1) img {
 	margin-right: 0;
 }
 

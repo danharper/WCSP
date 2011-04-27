@@ -2,7 +2,7 @@ $(function() {
 	
 	var html, section, aside, articles, h1, h1orig;
 	
-	console.log("we're working!");
+	console.log("dayum, say what?!");
 	
 	// js class
 	html = document.documentElement;
@@ -13,39 +13,27 @@ $(function() {
 	aside = $("body > aside")[0];
 	aside.style.height = section.offsetHeight + "px";
 	
+	// product listing names on hover
 	articles = $(".products article a");
 	$(articles).hover(
 		function() {
 			$(this).children("p").stop(true, true).fadeIn();
-			console.log(pa);
 		},
 		function() {
 			$(this).children("p").stop(true, true).fadeOut();
 		}
 	);
-	
-	// expand that shit
-	// articles = $("body > section article");
-	// $(articles).hover(
-		// function () {
-			// this.className += " expand";
-		// },
-		// function () {
-			// this.className = this.className.replace(/\bexpand\b/,'');
-		// }
-	// );
-	
-	
-	// lul wtf
-	// h1 = document.getElementsByTagName("h1")[0];
-	// h1orig = h1.innerHTML;
-	// $("body > header").hover(
-		// function () {
-			// h1.innerHTML = "☞ " + h1orig + " ☜";
-		// },
-		// function () {
-			// h1.innerHTML = h1orig;
-		// }
-	// );
+
+	// Product images display in box when clicked
+	var product_images, product_images_figure;
+	product_images = $("article.product .images a");
+	product_images_figure = $("article.product figure img");
+
+	$(product_images).click(function() {
+		img = $(this).find('img');
+		imgsrc = $(img).attr('src');
+		$(product_images_figure).attr('src', imgsrc);
+		return false;
+	});
 	
 });

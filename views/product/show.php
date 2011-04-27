@@ -1,13 +1,22 @@
 <article class="product">
 	<div class="images">
-		<?php foreach ($images as $image) {
-			$image_url = ROOT.'/static/productimages/'.$product->id.'/'.$image->name; ?>
-			<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
-			<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
-			<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
-			<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
-			<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
-			<?php
+		<?php
+		$i=0;
+		foreach ($images as $image) {
+			$image_url = ROOT.'/static/productimages/'.$product->id.'/'.$image->name;
+			if ($i == 0) { ?>
+				<figure>
+					<img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>">
+				</figure>
+				<?php
+			} ?>
+				<a href="#"><img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>"></a>
+				<a href="#"><img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>"></a>
+				<a href="#"><img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>"></a>
+				<a href="#"><img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>"></a>
+				<a href="#"><img src="<?php echo $image_url; ?>" alt="<?php echo $image->alt; ?>"></a>
+				<?php
+			$i++;
 		} ?>
 	</div>
 
