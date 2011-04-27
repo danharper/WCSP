@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^product/([^/.]+)/?$ index.php?route=product&action=show&id=$1
+RewriteRule ^category/([^/.]+)/?$ index.php?route=category&action=show&id=$1
+RewriteRule ^basket/?$ index.php?route=basket&action=index
+
+# General catch-all
+# RewriteRule ^([^/.]+)/([^/.]+)/([^/.]+)/?$ index.php?route=$1&action=$2&id=$3
