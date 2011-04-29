@@ -31,7 +31,7 @@
 			if ($product->lowstock) $stock = 'class="lowstock"'; ?>
 			<input type="text" name="quantity" value="1" <?php echo $stock; ?>>
 			<?php if ($product->lowstock) { ?>
-			<span class="lowstock">Stock is running low!</span>
+			<span class="lowstock">Hurry - only <?php echo $product->stock; ?> left!</span>
 			<?php } ?>
 			<input type="hidden" name="id" value="<?php echo $product->id; ?>">
 			<input type="hidden" name="name" value="<?php echo $product->title; ?>">
