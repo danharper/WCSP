@@ -45,7 +45,7 @@
 			<input type="hidden" name="id" value="<?php echo $product->id; ?>">
 			<input type="hidden" name="name" value="<?php echo $product->title; ?>">
 			<input type="hidden" name="price" value="<?php echo $product->price; ?>">
-			<input type="submit">
+			<input type="submit" <?php if (!$stock_remaining) echo 'disabled'; ?>>
 		<?php } else { ?>
 			<span class="lowstock">Product out of stock.</span>
 		<?php } ?>
