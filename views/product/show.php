@@ -24,15 +24,24 @@
 	<h2><?php echo $product->title; ?></h2>
 	<p class="description"><?php echo nl2br($product->description); ?></p>
 
+	<?php print_r($cart->get($product->id)); ?>
+
 	<form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post">
 		<h3>Add to Basket:</h3>
-		<?php if ($product->stock > 0) { ?>
-			<?php $stock = "";
-			if ($product->lowstock) $stock = 'class="lowstock"'; ?>
-			<input type="text" name="quantity" value="1" <?php echo $stock; ?>>
-			<?php if ($product->lowstock) { ?>
-			<span class="lowstock">Hurry - only <?php echo $product->stock; ?> left!</span>
+		<?php //if ($product->stock > 0) { ?>
+		<?php
+		$product_in_cart = $cart->get($product->id);
+		$stock_remaining = ($product->stock - $product_in_cart['quantity'] > 0) ? true : false;
+		if ($product->stock > 0) {
+			$stock = ""; if ($product->lowstock) $stock = 'class="lowstock"'; ?>
+			<input type="number" name="quantity" min="1" max="<?php echo $product->stock - $product_in_cart['quantity']; ?>" value="1" <?php echo $stock; ?>>
+
+			<?php if (!$stock_remaining) { ?>
+				<span class="lowstock">No more stock left.</span>
+			<?php } elseif ($product->lowstock) { ?>
+				<span class="lowstock">Hurry - only <?php echo $product->stock; ?> left!</span>
 			<?php } ?>
+
 			<input type="hidden" name="id" value="<?php echo $product->id; ?>">
 			<input type="hidden" name="name" value="<?php echo $product->title; ?>">
 			<input type="hidden" name="price" value="<?php echo $product->price; ?>">
