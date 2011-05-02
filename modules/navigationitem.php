@@ -1,6 +1,6 @@
 <?php
 class NavigationItem {
-	public $id, $name, $title, $current;
+	public $id, $name, $title, $current, $children;
 
 	function __construct($row) {
 		$this->id = $row->id;
@@ -11,5 +11,11 @@ class NavigationItem {
 			Router::$action == "show" &&
 			Router::$id == $row->id
 		) ? true : false;
+
+		$this->children = array();
+		$result = DB::query('SELECT * FROM `categories` WHERE `parent_id` = '.$this->id);
+		while ($row = $result->fetch_object()) {
+			$this->children[] = new NavigationItem($row);
+		}
 	}
 }

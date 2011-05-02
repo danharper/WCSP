@@ -28,6 +28,15 @@
 				$class = ($nav->current) ? $current : '';
 				echo '<li ' . $class . '>';
 				echo '<a href="'. $this->link_to('category', 'show', $nav->id) .'" title="'. $nav->title .'">'. $nav->name .'</a>';
+				if ($nav->children) {
+					echo '<ul>';
+						foreach ($nav->children as $cnav) {
+							echo '<li ' . $class . '>';
+							echo '<a href="'. $this->link_to('category', 'show', $cnav->id) .'" title="'. $cnav->title .'">'. $cnav->name .'</a>';
+							echo '</li>';
+						}
+					echo '</ul>';
+				}
 				echo '</li>';
 			}
 			?>

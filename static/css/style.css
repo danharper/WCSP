@@ -31,8 +31,30 @@ nav {
 	text-align: center;
 }
 
+nav ul ul {
+	display: none;
+	text-align: left;
+	position: absolute;
+	/* top: 16px; */
+	width: 120px;
+	left: 0;
+	padding: 10px 5px;
+	background: #fafafa;
+	border: 1px solid #eee;
+	border-bottom: 3px double #eee;
+}
+
+nav ul ul li {
+	display: block;
+}
+
+nav a:hover + ul {
+	display: block;
+}
+
 nav li {
 	display: inline;
+	position: relative;
 }
 
 nav a {
