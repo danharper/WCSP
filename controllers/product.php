@@ -19,7 +19,7 @@ class Product extends Controller {
 	}
 
 	function show() {
-		$id = $_GET['id'];
+		$id = mysql_real_escape_string($_GET['id']);		
 		$product = DB::get('SELECT * FROM `products` WHERE `id` = '. $id);
 		$product->lowstock = false;
 		if ($product->stock <= 10) {
@@ -31,5 +31,17 @@ class Product extends Controller {
 		$this->render();
 	}
 
+	function search() {
+		$query = mysql_real_escape_string($_GET['q']);
+		$products = DB::search($query);
+		$images = array();
+		foreach ($products as $p) {
+			$images[$p->id] = $this->get_main_image($p->id);
+		}
+		$this->add_payload("query", $query);
+		$this->add_payload("products", $products);
+		$this->add_payload("images", $images);
+		$this->render();
+	}
 
 }

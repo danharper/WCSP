@@ -29,4 +29,15 @@ class DB {
 		return $fetch;
 	}
 
+	// Search results
+	static function search($q) {
+		$term = "SELECT * FROM `products` WHERE `title` LIKE '%".$q."%'";
+		$result = self::connection()->query($term);
+		$fetch = array();
+		while ($row = $result->fetch_object()) {
+			$fetch[] = $row;
+		}
+		return $fetch;
+	}
+
 }

@@ -32,6 +32,10 @@ class Controller {
 		return $link;
 	}
 
+	function link_to_path($path) {
+		return ROOT . '/' . $path;
+	}
+
 	function redirect($route = '', $action = '') {
 		$route = ($route == '') ? Router::$default['route'] : $route;
 		$action = ($action == '') ? Router::$default['action'] : $action;
