@@ -1,4 +1,4 @@
-<h3>Edit Category - "<?php echo $category->name; ?>"</h3>
+<h2><a href="<?php echo $this->link_to('admin_home'); ?>">Admin</a> &nbsp;&raquo; <a href="<?php echo $this->link_to('admin_category'); ?>">Edit Categories</a> &nbsp;&raquo; &quot;<?php echo $category->name; ?>&quot;</h2>
 <form action="<?php echo $this->link_to('admin_category', 'update'); ?>" method="post">
 	<p>
 		<label for="name">Name:</label>

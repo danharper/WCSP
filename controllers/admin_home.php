@@ -7,7 +7,7 @@ class Admin_Home extends Controller {
 	}
 
 	function index() {
-		$this->set_title("Admin LOOOL");
+		$this->set_title("Administrator Panel");
 		$this->render();
 	}
 

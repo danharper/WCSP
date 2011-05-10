@@ -1,4 +1,4 @@
-<h2>Edit Products</h2>
+<h2><a href="<?php echo $this->link_to('admin_home'); ?>">Admin</a> &nbsp;&raquo; Edit Products</h2>
 <section class="products">
 	<?php foreach ($products as $p) { $image = $images[$p->id];
 		$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name;

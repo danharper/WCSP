@@ -4,6 +4,7 @@ RewriteRule ^category/([^/.]+)/?$ index.php?route=category&action=show&id=$1
 RewriteRule ^basket/?$ index.php?route=basket&action=index
 RewriteRule ^admin/?$ index.php?route=admin_home&action=index
 RewriteRule ^search/?$ index.php?route=product&action=search&q=$1
+RewriteRule ^checkout/?$ index.php?route=basket&action=checkout
 
 # General catch-all
 # RewriteRule ^([^/.]+)/([^/.]+)/([^/.]+)/?$ index.php?route=$1&action=$2&id=$3

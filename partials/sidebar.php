@@ -10,7 +10,7 @@
 			<p>You currently have no items in your shopping basket.</p>
 			<?php
 		} ?>
-		<p class="view"><a href="<?php echo $this->link_to('basket'); ?>">View Basket</a></p>
+		<p class="view"><a href="<?php echo $this->link_to_path('basket'); ?>">View Basket</a></p>
 	</section>
 	<form id="search" action="<?php echo ROOT; ?>" method="get">
 		<input type="hidden" name="route" value="product">

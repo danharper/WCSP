@@ -36,7 +36,8 @@ class Cart {
 			if ($item['quantity'] > 0)
 				$total += ($item['quantity'] * $item['price']);
 		}
-		return $total;
+		// return $total;
+		return number_format($total, 2);
 	}
 
 	function get($id) {

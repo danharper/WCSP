@@ -342,3 +342,72 @@ p {
 	text-transform: uppercase;
 	font-size: 0.7em;
 }
+
+#adminnav {
+	margin: 0;
+}
+
+#adminnav li {
+	display: inline-block;
+	float: left;
+	margin: 0 10px 10px 0;
+	width: 223px;
+}
+
+#adminnav a:link, #adminnav a:visited {
+	background: #fafafa;
+	border: 1px solid #eee;
+	color: #444;
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 10px;
+	letter-spacing: 2px;
+	padding: 10px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	text-decoration: none;
+}
+
+#adminnav a:hover, #adminnav a:focus {
+	border: 1px solid #ddd;
+}
+
+#basket + .actions {
+	padding: 15px 0 0;
+}
+
+#basket + .actions p {
+	display: inline-block;
+}
+
+#basket + .actions .empty {
+	float: left;
+}
+
+#basket + .actions .empty a {
+	background: -webkit-linear-gradient(pink, red);
+	border: 1px solid #f66;
+	border-radius: 55px;
+	box-shadow: 1px 1px 0 #ccc;
+	color: black;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+#basket + .actions .checkout {
+	float: right;
+}
+
+#basket + .actions .checkout a {
+	background: -webkit-linear-gradient(lightgreen, green);
+	border: 1px solid #6f6;
+	border-radius: 55px;
+	box-shadow: 1px 1px 0 #ccc;
+	color: black;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+.total {
+	margin: 10px 0;
+}

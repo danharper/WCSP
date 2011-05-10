@@ -20,11 +20,9 @@
 		} ?>
 	</div>
 
-	<p class="price">£<?php echo $product->price; ?></p>
+	<p class="price">£<?php echo number_format($product->price, 2); ?></p>
 	<h2><?php echo $product->title; ?></h2>
 	<p class="description"><?php echo nl2br($product->description); ?></p>
-
-	<?php print_r($cart->get($product->id)); ?>
 
 	<form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post">
 		<h3>Add to Basket:</h3>

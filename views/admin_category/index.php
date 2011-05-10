@@ -1,4 +1,4 @@
-<h2>Edit Categories</h2>
+<h2><a href="<?php echo $this->link_to('admin_home'); ?>">Admin</a> &nbsp;&raquo; Edit Categories</h2>
 
 <ul>
 	<?php

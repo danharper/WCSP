@@ -19,13 +19,13 @@
 						<td class="name"><a href="<?php echo $this->link_to('product', 'show', $id); ?>">
 							<?php echo $product['name']; ?>
 						</a></td>
-						<td class="price">£<?php echo $product['price']; ?></td>
+						<td class="price">£<?php echo number_format($product['price'], 2); ?></td>
 						<td class="quantity">
 							<a href="<?php echo $this->link_to('basket', 'decrease', $id); ?>">-</a>
 							<input type="text" value="<?php echo $product['quantity']; ?>">
 							<a href="<?php echo $this->link_to('basket', 'increase', $id); ?>">+</a>
 						</td>
-						<td class="price">£<?php echo $product['price'] * $product['quantity']; ?></td>
+						<td class="price">£<?php echo number_format($product['price'] * $product['quantity'], 2); ?></td>
 						<td class="remove">
 							<form action="<?php echo $this->link_to('basket', 'delete'); ?>" method="post">
 								<input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -37,6 +37,10 @@
 				} ?>
 			</tbody>
 		</table>
+		<div class="actions">
+			<p class="empty"><a href="<?php echo $this->link_to('basket', 'destroy'); ?>">Empty Basket</a></p>
+			<p class="checkout"><a href="<?php echo $this->link_to_path('checkout'); ?>">Checkout</a></p>
+		</div>
 		<?php
 	}
 	else { ?>

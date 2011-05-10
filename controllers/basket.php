@@ -71,6 +71,11 @@ class Basket extends Controller {
 	function destroy() {
 		// clear basket
 		$this->cart->clear();
+		echo 'hey';
+	}
+
+	function checkout() {
+		$this->render();
 	}
 
 }
