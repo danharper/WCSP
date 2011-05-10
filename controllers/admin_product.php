@@ -18,6 +18,10 @@ class Admin_Product extends Controller {
 		$this->render();
 	}
 
+	function add() {
+		$this->render();
+	}
+
 	function edit() {
 		$id = mysql_real_escape_string($_GET['id']);
 		$this->set_title('Edit Product - Admin');
@@ -30,5 +34,16 @@ class Admin_Product extends Controller {
 		$this->add_payload("product", $product);
 		$this->add_payload("images", $images);
 		$this->render();
+	}
+
+	function update() {
+		$id = mysql_real_escape_string($_POST['id']);
+		$title = mysql_real_escape_string($_POST['title']);
+		$category_id = mysql_real_escape_string($_POST['category']);
+		$description = mysql_real_escape_string($_POST['description']);
+		$price = mysql_real_escape_string($_POST['price']);
+		$stock = mysql_real_escape_string($_POST['stock']);
+		DB::query("UPDATE `products` SET `title` = '$title', `category_id` = '$category_id', `description` = '$description', `price` = '$price', `stock` = '$stock' WHERE `id` = '$id'");
+		$this->redirect('admin_product');
 	}
 }

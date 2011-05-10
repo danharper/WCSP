@@ -5,6 +5,14 @@
 		<input name="title" id="title" value="<?php echo $product->title; ?>" >
 	</p>
 	<p>
+		<label for="category">Category:</label>
+		<select name="category" id="category">
+			<?php foreach ($navigation->get_items() as $n) {
+				$selected = ($n->id == $product->category_id) ? 'selected' : '';
+				echo '<option value="'. $n->id .'" '. $selected .'>'. $n->name .'</option>';
+			} ?>
+		</select>
+	<p>
 		<label for="description">Description:</label>
 		<textarea name="description" id="description"><?php echo $product->description; ?></textarea>
 	</p>
@@ -16,6 +24,6 @@
 		<label for="stock">Stock:</label>
 		<input type="number" name="stock" id="stock" value="<?php echo $product->stock; ?>">
 	</p>
-
+	<input type="hidden" name="id" value="<?php echo $product->id; ?>">
 	<p><input type="submit"></p>
 </form>
