@@ -29,17 +29,40 @@
 		</table>
 		<p class="total"><strong>Total:</strong> £<?php echo $cart->total_price(); ?></p>
 
-		<!-- <h2>Enter your details:</h2> -->
-		<form onsubmit="alert('The prototype ends here. This is where your order would be processed, stock levels decreased etc.');">
-			<!-- <p><label for="fname">First Name:</label> <input id="fname" required></p> -->
-			<!-- <p><label for="lname">Last Name:</label> <input id="lname" required></p> -->
-			<!-- <p><label for="address">Address Line 1:</label> <input id="address" required></p> -->
-			<!-- <p><label for="addressb">Address Line 2:</label> <input id="addressb" required></p> -->
-			<!-- <p><label for="town">Town:</label> <input id="town" required></p> -->
-			<!-- <p><label for="postcode">Postcode:</label> <input id="postcode" required></p> -->
-			<!-- <p><label for="tel">Telephone:</label> <input id="tel"></p> -->
-			<!-- <p><label for="email">Email:</label> <input id="email" type="email" required></p> -->
-			<p><input type="submit" value="Place Order"></p>
+		<h2>Enter your details:</h2>
+		<p>Tell us where to send your order. All fields, except telephone number, are required.</p>
+		<form action="<?php echo $this->link_to('basket', 'order'); ?>" method="post">
+			<table id="placeorder">
+				<tr>
+					<td><label for="fname">First Name:</label></td>
+					<td><input id="fname" name="fname" required></td>
+				</tr>
+				<tr>
+					<td><label for="lname">Last Name:</label></td>
+					<td><input id="lname" name="lname" required></td>
+				</tr>
+				<tr>
+					<td><label for="address">Address:</label></td>
+					<td><textarea id="address" name="address" required></textarea></td>
+				</tr>
+				<tr>
+					<td><label for="town">Town:</label></td>
+					<td><input id="town" name="town" required></td>
+				</tr>
+				<tr>
+					<td><label for="postcode">Postcode:</label></td>
+					<td><input id="postcode" name="postcode" required></td>
+				</tr>
+				<tr>
+					<td><label for="tel">Telephone:</label></td>
+					<td><input id="tel" name="tel"></td>
+				</tr>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="email" id="email" name="email" required></td>
+				</tr>
+			</table>
+			<p><input type="submit" value="Place Order" class="placeorder"></p>
 		</form>
 
 		<?php

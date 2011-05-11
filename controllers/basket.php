@@ -78,4 +78,37 @@ class Basket extends Controller {
 		$this->render();
 	}
 
+	function order() {
+		$fname = mysql_real_escape_string($_POST['fname']);
+		$lname = mysql_real_escape_string($_POST['lname']);
+		$address = mysql_real_escape_string($_POST['address']);
+		$town = mysql_real_escape_string($_POST['town']);
+		$postcode = mysql_real_escape_string($_POST['postcode']);
+		$tel = mysql_real_escape_string($_POST['tel']);
+		$email = mysql_real_escape_string($_POST['email']);
+		$created_at = time();
+
+		if (!empty($fname) && !empty($lname) && !empty($address) && !empty($town) && !empty($postcode) && !empty($email)) {
+			// create new order record
+			DB::query("INSERT INTO `orders` (`user_id`, `fname`, `lname`, `address`, `town`, `postcode`, `tel`, `email`, `created_at`) VALUES ('1', '$fname', '$lname', '$address', '$town', '$postcode', '$tel', '$email', '$created_at')");
+			$order = DB::get("SELECT `id` FROM `orders` WHERE `user_id` = '1' ORDER BY `id` DESC LIMIT 1");
+			$order_id = $order->id;
+
+			// add order rows
+			foreach ($this->cart->products() as $id => $product) {
+				$quantity = $product['quantity'];
+				DB::query("INSERT INTO `orderrows` (`order_id`, `product_id`, `quantity`) VALUES ('$order_id', '$id', '$quantity')");
+			}
+
+			// success
+			$this->session->add_success("Order placed successfully.");
+			$this->cart->clear();
+			$this->redirect('product');
+		}
+		else {
+			$this->session->add_error("Please fill out all required fields.");
+			$this->redirect('basket', 'checkout');
+		}
+	}
+
 }

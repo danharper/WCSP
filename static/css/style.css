@@ -399,7 +399,8 @@ p {
 	float: right;
 }
 
-#basket + .actions .checkout a {
+#basket + .actions .checkout a,
+input.placeorder {
 	background: -webkit-linear-gradient(#7f7, #3f3);
 	border: 1px solid #6f6;
 	border-radius: 55px;
@@ -443,4 +444,24 @@ p.manageimages {
 	background: #eee;
 	border: 1px solid #ddd;
 	padding: 10px;
+}
+
+#placeorder td {
+	padding: 7px;
+}
+
+#placeorder tr td:first-child {
+	padding-right: 15px;
+	text-align: right;
+	width: 90px;
+}
+
+#placeorder input, #placeorder textarea {
+	border: 1px solid #ddd;
+	padding: 4px;
+	width: 300px;
+}
+
+#placeorder textarea {
+	height: 100px;
 }
