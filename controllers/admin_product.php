@@ -19,7 +19,27 @@ class Admin_Product extends Controller {
 	}
 
 	function add() {
+		$this->set_title("Add New Product - Admin");
 		$this->render();
+	}
+
+	function create() {
+		$title = mysql_real_escape_string($_POST['title']);
+		$category_id = mysql_real_escape_string($_POST['category']);
+		$description = mysql_real_escape_string($_POST['description']);
+		$price = mysql_real_escape_string($_POST['price']);
+		$stock = mysql_real_escape_string($_POST['stock']);
+
+		if (!empty($title) && !empty($category_id) && !empty($description) && !empty($price) && $stock >= 0) {
+			// go ahead
+			DB::query("INSERT INTO `products` (`title`, `category_id`, `description`, `price`, `stock`) VALUES ('$title', '$category_id', '$description', '$price', '$stock')");
+			$this->session->add_success("Product listed successfully.");
+			$this->redirect('admin_product');
+		}
+		else {
+			$this->session->add_error("All fields must be filled in correctly.");
+			$this->redirect('admin_product', 'add');
+		}
 	}
 
 	function edit() {
@@ -43,7 +63,14 @@ class Admin_Product extends Controller {
 		$description = mysql_real_escape_string($_POST['description']);
 		$price = mysql_real_escape_string($_POST['price']);
 		$stock = mysql_real_escape_string($_POST['stock']);
-		DB::query("UPDATE `products` SET `title` = '$title', `category_id` = '$category_id', `description` = '$description', `price` = '$price', `stock` = '$stock' WHERE `id` = '$id'");
-		$this->redirect('admin_product');
+		if (!empty($id) && !empty($title) && !empty($category_id) && !empty($description) && !empty($price) && $stock >= 0) {
+			DB::query("UPDATE `products` SET `title` = '$title', `category_id` = '$category_id', `description` = '$description', `price` = '$price', `stock` = '$stock' WHERE `id` = '$id'");
+			$this->session->add_success("Product updated successfully.");
+			$this->redirect('admin_product');
+		}
+		else {
+			$this->session->add_error("All fields must be filled in correctly.");
+			$this->redirect('admin_product', 'edit', $id);
+		}
 	}
 }

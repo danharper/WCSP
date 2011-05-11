@@ -72,7 +72,16 @@ class Controller {
 	}
 
 	protected function get_main_image($id) {
-		return DB::get('SELECT * FROM `productimages` WHERE `product_id` = '. $id .' AND `main` = 1 LIMIT 1');
+		$image = DB::get('SELECT * FROM `productimages` WHERE `product_id` = '. $id .' AND `main` = 1 LIMIT 1');
+		if ($image) {
+			$path = ROOT.'/static/productimages/'.$id.'/'.$image->name;
+			$image->path = $path;
+		}
+		else {
+			$image = new NoProductImage;
+			// $path = ROOT.'/static/productimages/noimage.png';
+		}
+		return $image;
 	}
 
 }

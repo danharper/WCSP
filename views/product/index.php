@@ -1,6 +1,11 @@
 <section class="products">
 	<?php foreach ($products as $p) { $image = $images[$p->id];
-		$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name;
+		if ($image) {
+			$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name;
+		}
+		else {
+			$image_url = ROOT.'/static/productimages/noimage.png';
+		}
 		$payload = array(
 			'product' => $p,
 			'image_url' => $image_url,

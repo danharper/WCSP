@@ -28,7 +28,7 @@
 <form action="<?php echo $this->link_to('admin_category', 'create'); ?>" method="post">
 	<p>
 		<label for="name"><strong>New Category:</strong></label>
-		<input type="text" name="name" id="name">
+		<input type="text" name="name" id="name" required>
 		<input type="submit">
 	</p>
 </form>

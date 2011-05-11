@@ -13,6 +13,10 @@ class Admin_Category extends Controller {
 
 	function create() {
 		$name = mysql_real_escape_string($_POST['name']);
+		if (empty($name)) {
+			$this->session->add_error("All fields must be filled in correctly.");
+			$this->redirect('admin_category');
+		}
 		DB::query("INSERT INTO `categories` (name) VALUES('$name')");
 		$this->session->add_success('Category created.');
 		$this->redirect('admin_category');
@@ -36,6 +40,12 @@ class Admin_Category extends Controller {
 		$id = mysql_real_escape_string($_POST['id']);
 		$name = mysql_real_escape_string($_POST['name']);
 		$parent = mysql_real_escape_string($_POST['parent']);
+
+		if (empty($name)) {
+			$this->session->add_error("All fields must be filled in correctly.");
+			$this->redirect('admin_category', 'edit', $id);
+		}
+
 		if ($parent == 0) {
 			DB::query("UPDATE `categories` SET `name` = '$name', `parent_id` = NULL WHERE `id` = $id");
 		}
