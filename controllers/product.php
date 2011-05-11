@@ -12,7 +12,6 @@ class Product extends Controller {
 		$images = array();
 		foreach ($products as $p) {
 			$images[$p->id] = $this->get_main_image($p->id);
-			echo $images[$p->id]->path.'<br>';
 		}
 		$this->add_payload("products", $products);
 		$this->add_payload("images", $images);

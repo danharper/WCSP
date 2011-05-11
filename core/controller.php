@@ -79,7 +79,6 @@ class Controller {
 		}
 		else {
 			$image = new NoProductImage;
-			// $path = ROOT.'/static/productimages/noimage.png';
 		}
 		return $image;
 	}
