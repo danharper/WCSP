@@ -5,6 +5,7 @@ class Router {
 
 	function __construct() {
 		include ('routes.php');
+		self::$session = new Session;
 
 		self::$route = (isset($_GET['route'])) ? $_GET['route'] : self::$default["route"];
 		self::$action = (isset($_GET['action'])) ? $_GET['action'] : self::$default["action"];
@@ -22,7 +23,6 @@ class Router {
 			die();
 		}
 
-		self::$session = new Session;
 		$s = new self::$route;
 		$a = self::$action;
 		$i = self::$id;

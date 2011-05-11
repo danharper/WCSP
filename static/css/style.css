@@ -493,3 +493,18 @@ p.manageimages {
 #adminorders li ul {
 	margin-top: 10px;
 }
+
+.stockcounts span {
+	color: red;
+	font-weight: bold;
+}
+
+.stockcounts {
+	margin: 0 20px 20px 0;
+	width: 45%;
+	float: left;
+}
+
+.stockcounts h3 {
+	margin: 0 0 5px;
+}
