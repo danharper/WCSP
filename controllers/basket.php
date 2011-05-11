@@ -44,7 +44,13 @@ class Basket extends Controller {
 		$id = $_GET['id'];
 		$item = $this->cart->get($id);
 		$quantity = $item['quantity'] + 1;
-		$this->cart->update($id, $quantity);
+		$item = DB::get("SELECT * FROM `products` WHERE `id` = '$id'");
+		if ($quantity <= $item->stock) {
+			$this->cart->update($id, $quantity);
+		}
+		else {
+			$this->session->add_error("There are only ".$item->stock." of that product left in stock.");
+		}
 		$this->redirect('basket');
 	}
 
@@ -65,6 +71,7 @@ class Basket extends Controller {
 		if ($_POST['id'] == '') $this->redirect('basket');
 		$id = $_POST['id'];
 		$this->cart->remove($id);
+		$this->session->add_success("Product removed from your basket.");
 		$this->redirect('basket');
 	}
 

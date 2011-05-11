@@ -67,7 +67,17 @@ class Controller {
 	}
 
 	protected function get_all_images($id) {
-		return DB::fetch('SELECT * FROM `productimages` WHERE `product_id` = '. $id);
+		$images = DB::fetch('SELECT * FROM `productimages` WHERE `product_id` = '. $id);
+		if ($images) {
+			foreach ($images as $image) {
+				$path = ROOT.'/static/productimages/'.$id.'/'.$image->name;
+				$image->path = $path;
+			}
+		}
+		else {
+			$images[] = new NoProductImage;
+		}
+		return $images;
 	}
 
 	protected function get_main_image($id) {

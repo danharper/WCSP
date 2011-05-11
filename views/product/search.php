@@ -1,10 +1,8 @@
 <section class="products">
 	<h2>Search Results for &quot;<?php echo $query; ?>&quot;</h2>
-	<?php foreach ($products as $p) { $image = $images[$p->id];
-		$image_url = ROOT.'/static/productimages/'.$p->id.'/'.$image->name;
+	<?php foreach ($products as $product) { $image = $images[$product->id];
 		$payload = array(
-			'product' => $p,
-			'image_url' => $image_url,
+			'product' => $product,
 			'image' => $image
 		);
 		$this->partial('products', $payload);
