@@ -1,5 +1,11 @@
 <h2><a href="<?php echo $this->link_to('admin_home'); ?>">Admin</a> &nbsp;&raquo; <a href="<?php echo $this->link_to('admin_product'); ?>">Manage Products</a> &nbsp;&raquo; &quot;<?php echo $product->title; ?>&quot;</h2>
 <form action="<?php echo $this->link_to('admin_product', 'update'); ?>" method="post">
+	<p class="manageimages">
+		<img src="<?php echo $image->path; ?>" alt="<?php echo $image->alt; ?>"><br>
+		<a href="<?php echo $this->link_to('admin_product', 'images', $product->id); ?>">
+			Manage Product Images
+		</a>
+	</p>
 	<p>
 		<label for="title">Title:</label>
 		<input name="title" id="title" value="<?php echo $product->title; ?>" required>

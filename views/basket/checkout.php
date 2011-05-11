@@ -12,9 +12,7 @@
 					<th class="remove">Remove</th>
 				</th>
 				<?php
-				foreach ($cart->products() as $id => $product) {
-					// $image = $images[$id];
-					// $image_url = ROOT.'/static/productimages/'.$id.'/'.$image->name; ?>
+				foreach ($cart->products() as $id => $product) { ?>
 					<tr>
 						<td class="name"><a href="<?php echo $this->link_to('product', 'show', $id); ?>">
 							<?php echo $product['name']; ?>
@@ -24,12 +22,6 @@
 							<?php echo $product['quantity']; ?>
 						</td>
 						<td class="price">£<?php echo number_format($product['price'] * $product['quantity'], 2); ?></td>
-						<td class="remove">
-							<!-- <form action="<?php echo $this->link_to('basket', 'delete'); ?>" method="post"> -->
-								<!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
-								<!-- <input type="submit" value="x"> -->
-							<!-- </form> -->
-						</td>
 					</tr>
 					<?php
 				} ?>

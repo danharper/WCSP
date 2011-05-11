@@ -438,3 +438,9 @@ p {
 #confirmremove p input {
 	font-size: 11px;
 }
+
+p.manageimages {
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 10px;
+}

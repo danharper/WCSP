@@ -34,7 +34,7 @@ class Admin_Product extends Controller {
 			// go ahead
 			DB::query("INSERT INTO `products` (`title`, `category_id`, `description`, `price`, `stock`) VALUES ('$title', '$category_id', '$description', '$price', '$stock')");
 			$this->session->add_success("Product listed successfully.");
-			$this->redirect('admin_product');
+			$this->redirect('admin_product', 'images');
 		}
 		else {
 			$this->session->add_error("All fields must be filled in correctly.");
@@ -50,9 +50,9 @@ class Admin_Product extends Controller {
 		if ($product->stock <= 10) {
 			$product->lowstock = true;
 		}
-		$images = $this->get_all_images($product->id);
+		$image = $this->get_main_image($product->id);
 		$this->add_payload("product", $product);
-		$this->add_payload("images", $images);
+		$this->add_payload("image", $image);
 		$this->render();
 	}
 
@@ -72,5 +72,9 @@ class Admin_Product extends Controller {
 			$this->session->add_error("All fields must be filled in correctly.");
 			$this->redirect('admin_product', 'edit', $id);
 		}
+	}
+
+	function images() {
+		$this->render();
 	}
 }
