@@ -35,5 +35,14 @@ $(function() {
 		$(product_images_figure).attr('src', imgsrc);
 		return false;
 	});
+
+	// Confirm removal
+	function confirmRemove() {
+		var c = confirm("Are you sure you want to remove this?");
+		if (c)
+			return true;
+		return false;
+	}
+	$('#confirmremove').submit(confirmRemove);
 	
 });

@@ -75,7 +75,5 @@ class Cart {
 	function clear() {
 		$this->cart = array();
 	}
-		
-		
 
 }

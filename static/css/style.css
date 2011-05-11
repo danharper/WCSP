@@ -384,12 +384,13 @@ p {
 	float: left;
 }
 
-#basket + .actions .empty a {
-	background: -webkit-linear-gradient(pink, red);
+#basket + .actions .empty a,
+#confirmremove p input {
+	background: -webkit-linear-gradient(#f77, #f33);
 	border: 1px solid #f66;
 	border-radius: 55px;
 	box-shadow: 1px 1px 0 #ccc;
-	color: black;
+	color: white;
 	padding: 5px 10px;
 	text-decoration: none;
 }
@@ -399,7 +400,7 @@ p {
 }
 
 #basket + .actions .checkout a {
-	background: -webkit-linear-gradient(lightgreen, green);
+	background: -webkit-linear-gradient(#7f7, #3f3);
 	border: 1px solid #6f6;
 	border-radius: 55px;
 	box-shadow: 1px 1px 0 #ccc;
@@ -410,4 +411,30 @@ p {
 
 .total {
 	margin: 10px 0;
+}
+
+.flashmessages {
+	margin: 0 0 15px;
+}
+
+.flashmessages .error {
+	background: -webkit-linear-gradient(#f77, #f33);
+	border: 1px solid #f66;
+	border-radius: 5px;
+	color: white;
+	margin: 0;
+	padding: 5px 10px;
+}
+
+.flashmessages .success {
+	background: -webkit-linear-gradient(#7f7, #3f3);
+	border: 1px solid #6f6;
+	border-radius: 5px;
+	color: black;
+	margin: 0;
+	padding: 5px 10px;
+}
+
+#confirmremove p input {
+	font-size: 11px;
 }

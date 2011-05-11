@@ -1,6 +1,7 @@
 <?php
 class Router {
 	public static $default, $route, $action, $id;
+	public static $session;
 
 	function __construct() {
 		include ('routes.php');
@@ -21,6 +22,7 @@ class Router {
 			die();
 		}
 
+		self::$session = new Session;
 		$s = new self::$route;
 		$a = self::$action;
 		$i = self::$id;

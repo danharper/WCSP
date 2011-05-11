@@ -4,7 +4,6 @@
 		<label for="name">Name:</label>
 		<input type="text" name="name" id="name" value="<?php echo $category->name; ?>">
 		<input type="hidden" name="id" value="<?php echo $category->id; ?>">
-		<input type="submit">
 	</p>
 	<p>
 		<label for="parent">Parent:</label>
@@ -26,4 +25,10 @@
 			} ?>
 			<option value="0" <?php if ($found == 0) echo 'selected'; ?>>(none)</option>
 		</select>
+		<p><input type="submit"></p>
+</form>
+
+<form action="<?php echo $this->link_to('admin_category', 'remove'); ?>" method="post" id="confirmremove">
+	<input type="hidden" name="id" value="<?php echo $category->id; ?>">
+	<p><br><input type="submit" value="Remove Category" id="confirmremove"></p>
 </form>

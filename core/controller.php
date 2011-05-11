@@ -1,15 +1,18 @@
 <?php
 class Controller {
 	protected $cart;
+	protected $session;
 	protected $payload, $is_home; // used in views
 
 	function __construct() {
 		$this->cart = new Cart;
+		$this->session = Router::$session;
 
 		$this->payload = array(
 			"title" => SITE_TITLE,
 			"navigation" => new Navigation,
-			"cart" => $this->cart
+			"cart" => $this->cart,
+			"session" => $this->session
 		);
 
 		$this->is_home = (
@@ -36,10 +39,11 @@ class Controller {
 		return ROOT . '/' . $path;
 	}
 
-	function redirect($route = '', $action = '') {
+	function redirect($route = '', $action = '', $id = '') {
 		$route = ($route == '') ? Router::$default['route'] : $route;
 		$action = ($action == '') ? Router::$default['action'] : $action;
-		header('Location: '. ROOT .'/?route='. $route .'&action='. $action);
+		$id = ($id == '') ? '' : '&id='.$id;
+		header('Location: '. ROOT .'/?route='. $route .'&action='. $action . $id);
 		die();
 	}
 

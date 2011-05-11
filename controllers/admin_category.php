@@ -14,6 +14,7 @@ class Admin_Category extends Controller {
 	function create() {
 		$name = mysql_real_escape_string($_POST['name']);
 		DB::query("INSERT INTO `categories` (name) VALUES('$name')");
+		$this->session->add_success('Category created.');
 		$this->redirect('admin_category');
 	}
 
@@ -41,7 +42,20 @@ class Admin_Category extends Controller {
 		else {
 			DB::query("UPDATE `categories` SET `name` = '$name', `parent_id` = '$parent' WHERE `id` = $id");
 		}
+		$this->session->add_success('Category modified.');
 		$this->redirect('admin_category');
 	}
 
+	function remove() {
+		$id = mysql_real_escape_string($_POST['id']);
+		$children = DB::get("SELECT COUNT(*) AS 'count' FROM `categories` WHERE `parent_id` = '$id'");
+		if ($children->count) {
+			$this->session->add_error("Can't remove a category which contains sub-categories. Please remove those first.");
+		}
+		else {
+			DB::query("DELETE FROM `categories` WHERE `id` = '$id'");
+			$this->session->add_success("Category removed.");
+		}
+		$this->redirect('admin_category');
+	}
 }

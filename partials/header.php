@@ -44,3 +44,17 @@
 	</nav>
 	
 	<section id="main">
+
+	<?php if ($session->count_errors() || $session->count_successes()) { ?>
+		<div class="flashmessages">
+			<?php
+			if ($session->count_errors())
+				foreach ($session->get_errors() as $message)
+					echo '<p class="error">'. $message .'</p>';
+
+			if ($session->count_successes())
+				foreach ($session->get_successes() as $message)
+					echo '<p class="success">'. $message .'</p>';
+			?>
+		</div>
+	<?php } ?>
