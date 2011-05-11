@@ -483,3 +483,13 @@ p.manageimages {
 #placeorder textarea {
 	height: 100px;
 }
+
+#adminorders > li {
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 20px;
+	padding: 0 0 20px;
+}
+
+#adminorders li ul {
+	margin-top: 10px;
+}
