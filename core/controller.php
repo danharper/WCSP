@@ -29,7 +29,7 @@ class Controller {
 		$this->payload[$key] = $value;
 	}
 
-	function link_to($route, $action = 'index', $id = '') {
+	function link_to($route = 'product', $action = 'index', $id = '') {
 		$link = ROOT . '/?route='. $route .'&action='. $action;
 		if ($id != '') $link .= '&id='. $id;
 		return $link;
@@ -54,7 +54,6 @@ class Controller {
 
 		extract($this->payload);
 
-		echo "<div id='debug'><span>Debug Bar:</span> $route#$action($id)</div>";
 		include ('partials/header.php');
 		require ('views/'. $route .'/'. $action .'.php');
 		include ('partials/sidebar.php');

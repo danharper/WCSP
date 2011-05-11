@@ -9,6 +9,13 @@
 </head> 
 <body>
 
+	<div id="debug">
+		<span>Debug Bar:</span> <?php echo "$route#$action($id)"; ?>
+		<span class="links">
+			<a href="<?php echo $this->link_to(); ?>">Front Page</a> &bull;
+			<a href="<?php echo $this->link_to('admin_home'); ?>">Administrator Dashboard</a>
+	</div>
+
 	<header>
 		<h1><a href="<?php echo ROOT; ?>">The Super Mega <b>Awesome</b> Shopping Site</a></h1>
 	</header>

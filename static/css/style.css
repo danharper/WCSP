@@ -102,7 +102,7 @@ section.products article h2 {
 	text-shadow: 1px 1px 2px black;
 	font-size: 15px;
 	position: absolute;
-	bottom: 15px;
+	bottom: 19px;
 	right: 10px;
 	width: 190px;
 	padding: 3px 5px;
@@ -343,6 +343,20 @@ p {
 	font-size: 0.7em;
 }
 
+#debug .links {
+	float: right;
+	margin: 3px 0 0;
+}
+
+#debug a:link, #debug a:visited {
+	color: #ddd;
+	text-decoration: none;
+}
+
+#debug a:hover, #debug a:focus {
+	text-decoration: underline;
+}
+
 #adminnav {
 	margin: 0;
 }
@@ -370,6 +384,10 @@ p {
 
 #adminnav a:hover, #adminnav a:focus {
 	border: 1px solid #ddd;
+}
+
+#adminnav li:nth-child(4n) {
+	margin: 0 0 10px 233px;
 }
 
 #basket + .actions {
