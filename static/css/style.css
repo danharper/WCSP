@@ -75,6 +75,7 @@ section#main {
 	margin: 0 20px;
 	padding: 0;
 	width: 700px;
+	min-height: 140px;
 	/* overflow: hidden; */
 }
 
