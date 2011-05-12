@@ -40,12 +40,12 @@
 			foreach ($navigation->get_items() as $nav) {
 				$class = ($nav->current) ? $current : '';
 				echo '<li ' . $class . '>';
-				echo '<a href="'. $this->link_to('category', 'show', $nav->id) .'" title="'. $nav->title .'">'. $nav->name .'</a>';
+				echo '<a href="'. $this->link_to_path('category/'.$nav->id) .'" title="'. $nav->title .'">'. $nav->name .'</a>';
 				if ($nav->children) {
 					echo '<ul>';
 						foreach ($nav->children as $cnav) {
 							echo '<li ' . $class . '>';
-							echo '<a href="'. $this->link_to('category', 'show', $cnav->id) .'" title="'. $cnav->title .'">'. $cnav->name .'</a>';
+							echo '<a href="'. $this->link_to_path('category/'.$cnav->id) .'" title="'. $cnav->title .'">'. $cnav->name .'</a>';
 							echo '</li>';
 						}
 					echo '</ul>';
