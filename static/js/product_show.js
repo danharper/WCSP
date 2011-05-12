@@ -24,14 +24,32 @@ product_show = function() {
 		submit.disabled = true;
 		var params = 'id='+i+'&name='+n+'&price='+p+'&quantity='+q;
 		params = encodeURI(params);
-		ajaxPOST('api/add_to_basket', updateBasket, params);
+		ajaxPOST('api/add_to_basket', validateBasket, params);
 		return false;
 	};
 
-	updateBasket = function(message) {
-		console.log(message);
-		cart.childNodes[1].innerHTML = message;
+	validateBasket = function(status) {
+		if (status == 0) {
+			outOfStock();
+		}
+		else {
+			inStock();
+		}
+		ajaxGET('api/basket_quantity_message', updateBasket, '');
+	};
+
+	outOfStock = function() {
+		submit.disabled = true;
+		var stockwarning = document.querySelector(".lowstockwarning");
+		stockwarning.innerHTML = "No more stock left.";
+	};
+
+	inStock = function() {
 		submit.disabled = false;
+	};
+
+	updateBasket = function(message) {
+		cart.childNodes[1].innerHTML = message;
 	};
 
 	quantity.onchange = calculateSubtotal;

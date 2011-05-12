@@ -46,13 +46,28 @@ class Cart {
 	}
 
 	function add($id, $name, $price, $quantity) {
-		if (isset($this->cart[$id]))
-			$quantity += $this->cart[$id]['quantity'];
+		$status = 1;
+		$item = DB::get("SELECT `stock` FROM `products` WHERE `id` = '$id' LIMIT 1");
+		if (isset($this->cart[$id])) {
+			if (($quantity + $this->cart[$id]['quantity']) > $item->stock) {
+				$quantity = $item->stock;
+				$status = 0;
+			}
+			else {
+				$quantity += $this->cart[$id]['quantity'];
+			}
+		}
+
+		if ($quantity >= $item->stock) {
+			$status = 0;
+		}
+
 		$this->cart[$id] = array(
 			'name' => $name,
 			'price' => $price,
 			'quantity' => $quantity
 		);
+		return $status;
 	}
 
 	function update($id, $quantity) {

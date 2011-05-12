@@ -34,7 +34,7 @@
 			<?php if (!$stock_remaining) { ?>
 				<span class="lowstock">No more stock left.</span>
 			<?php } elseif ($product->lowstock) { ?>
-				<span class="lowstock">Hurry - only <?php echo $product->stock; ?> left!</span>
+				<span class="lowstock lowstockwarning">Hurry - only <?php echo $product->stock; ?> left!</span>
 			<?php } ?>
 
 			<input type="hidden" name="id" value="<?php echo $product->id; ?>" id="product_id">

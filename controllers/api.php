@@ -47,8 +47,10 @@ class Api extends Controller {
 		$name = mysql_real_escape_string($_POST['name']);
 		$price = mysql_real_escape_string($_POST['price']);
 		$quantity = mysql_real_escape_string($_POST['quantity']);
-		$this->cart->add($id, $name, $price, $quantity);
+		echo $this->cart->add($id, $name, $price, $quantity);
+	}
 
+	function basket_quantity_message() {
 		$m = 'You have <span class="items">'. $this->cart->total_size() .'</span>';
 		$m .= ' items in your shopping basket, totalling <span class="price">&#163;';
 		$m .= $this->cart->total_price() .'</span>.';
