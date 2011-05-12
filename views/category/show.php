@@ -1,4 +1,3 @@
-<ol>
 <?php
 if ($products) { ?>
 	<section class="products">

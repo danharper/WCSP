@@ -17,7 +17,7 @@
 		} ?>
 	</div>
 
-	<p class="price">£<?php echo number_format($product->price, 2); ?></p>
+	<p class="price">£<span id="price"><?php echo number_format($product->price, 2); ?></span></p>
 	<h2><?php echo $product->title; ?></h2>
 	<p class="description"><?php echo nl2br($product->description); ?></p>
 
@@ -29,7 +29,7 @@
 		$stock_remaining = ($product->stock - $product_in_cart['quantity'] > 0) ? true : false;
 		if ($product->stock > 0) {
 			$stock = ""; if ($product->lowstock) $stock = 'class="lowstock"'; ?>
-			<input type="number" name="quantity" min="1" max="<?php echo $product->stock - $product_in_cart['quantity']; ?>" value="1" <?php echo $stock; ?>>
+			<input type="number" name="quantity" min="1" max="<?php echo $product->stock - $product_in_cart['quantity']; ?>" value="1" <?php echo $stock; ?> id="quantity">
 
 			<?php if (!$stock_remaining) { ?>
 				<span class="lowstock">No more stock left.</span>
@@ -45,5 +45,6 @@
 			<span class="lowstock">Product out of stock.</span>
 		<?php } ?>
 	</form>
+	<p><strong>Subtotal:</strong> <span id="subtotal">£<?php echo number_format($product->price, 2); ?></span></p>
 	<div class="clear">&nbsp;</div>
 </article>

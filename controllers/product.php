@@ -28,6 +28,8 @@ class Product extends Controller {
 		$images = $this->get_all_images($product->id);
 		$this->add_payload("product", $product);
 		$this->add_payload("images", $images);
+		$this->add_js("ajax");
+		$this->add_js("product_show");
 		$this->render();
 	}
 

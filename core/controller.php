@@ -3,10 +3,12 @@ class Controller {
 	protected $cart;
 	protected $session;
 	protected $payload, $is_home; // used in views
+	protected $js;
 
 	function __construct() {
 		$this->cart = new Cart;
 		$this->session = Router::$session;
+		$this->js = array();
 
 		$this->payload = array(
 			"title" => SITE_TITLE,
@@ -64,6 +66,14 @@ class Controller {
 		if (isset($payload))
 			extract($payload);
 		require 'partials/'. $file .'.php';
+	}
+
+	function add_js($filename) {
+		$this->js[] = $filename;
+	}
+
+	function get_js() {
+		return $this->js;
 	}
 
 	protected function get_all_images($id) {

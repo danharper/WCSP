@@ -12,8 +12,8 @@
 	<div id="debug">
 		<span>Debug Bar:</span> <?php echo "$route#$action($id)"; ?>
 		<span class="links">
-			<a href="<?php echo $this->link_to(); ?>">Front Page</a> &bull;
-			<a href="<?php echo $this->link_to('admin_home'); ?>">Administrator Dashboard</a>
+			<a href="<?php echo ROOT; ?>">Front Page</a> &bull;
+			<a href="<?php echo $this->link_to_path('admin'); ?>">Administrator Dashboard</a>
 	</div>
 
 	<header>
