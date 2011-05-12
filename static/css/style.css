@@ -130,6 +130,10 @@ section.products article p {
 	display: none;
 }
 
+.js section.products article p.hover {
+	display: block;
+}
+
 .product .images {
 	background: #f0f0f0;
 	padding: 10px 10px 0 10px;

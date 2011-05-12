@@ -1,48 +1,66 @@
-$(function() {
-	
-	var html, section, aside, articles, h1, h1orig;
-	
-	console.log("dayum, say what?!");
-	
-	// js class
+window.onload = function() {
+	// Oh jQuery, how I miss you...
+
+	var html, main, aside, product_images, product_images_figure, remove_button;
+
+	// console.log("We have liftoff.");
+
+	// swap 'no-js' class on html tag for 'js'
 	html = document.documentElement;
 	html.className = html.className.replace(/\bno-js\b/,'') + 'js';
+
+
+	// faux columns, like a boss
+	main = document.getElementById("main");
+	aside = document.getElementById("sidebar");
+	aside.style.height = main.offsetHeight + "px";
+
+
+	// product listing prices on hover
+	var articles = document.querySelectorAll(".products article a");
+
+	fadePriceIn = function(e) {
+		var target = e.target;
+		if (target.tagName != 'IMG') return; // stop event bubbling
+		var price = target.parentElement.childNodes[3];
+		price.className = "hover";
+	}
+
+	fadePriceOut = function(e) {
+		var target = e.target;
+		if (target.tagName != 'IMG') return; // stop event bubbling
+		var price = target.parentElement.childNodes[3];
+		price.className = "";
+	}
+
+	for (i = 0; i < articles.length; i++) {
+		element = articles[i];
+		element.onmouseover = fadePriceIn;
+		element.onmouseout = fadePriceOut;
+	}
 	
-	// faux columns like a boss
-	section = $("body > section")[0];
-	aside = $("body > aside")[0];
-	aside.style.height = section.offsetHeight + "px";
-	
-	// product listing names on hover
-	articles = $(".products article a");
-	$(articles).hover(
-		function() {
-			$(this).children("p").stop(true, true).fadeIn();
-		},
-		function() {
-			$(this).children("p").stop(true, true).fadeOut();
-		}
-	);
 
-	// Product images display in box when clicked
-	var product_images, product_images_figure;
-	product_images = $("article.product .images a");
-	product_images_figure = $("article.product figure img");
 
-	$(product_images).click(function() {
-		img = $(this).find('img');
-		imgsrc = $(img).attr('src');
-		$(product_images_figure).attr('src', imgsrc);
-		return false;
-	});
+	// product images display in box when clicked
+	product_images = document.querySelectorAll(".product .images a");
+	product_images_figure = document.querySelector(".product figure img");
 
-	// Confirm removal
-	function confirmRemove() {
-		var c = confirm("Are you sure you want to remove this?");
-		if (c)
-			return true;
+	swapImages = function(e) {
+		product_images_figure.src = e.target.src;
 		return false;
 	}
-	$('#confirmremove').submit(confirmRemove);
+
+	for (i = 0; i < product_images.length; i++) {
+		product_images[i].onclick = swapImages;
+	}
 	
-});
+
+	// confirm removal
+	remove_button = document.getElementById("confirmremove");
+	if (remove_button) {
+		remove_button.onsubmit = function() {
+			return confirm("Are you sure you want to remove this?");
+		}
+	}
+	
+}

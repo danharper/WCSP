@@ -1,6 +1,6 @@
 </section>
 
-<aside>
+<aside id="sidebar">
 	<section id="cart">
 		<?php if ($cart->size() > 0) { ?>
 			<p>You have <span class="items"><?php echo $cart->total_size(); ?></span> items in your shopping basket, totalling <span class="price">£<?php echo $cart->total_price(); ?></span>.</p>

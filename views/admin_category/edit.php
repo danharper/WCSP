@@ -30,5 +30,5 @@
 
 <form action="<?php echo $this->link_to('admin_category', 'remove'); ?>" method="post" id="confirmremove">
 	<input type="hidden" name="id" value="<?php echo $category->id; ?>">
-	<p><br><input type="submit" value="Remove Category" id="confirmremove"></p>
+	<p><br><input type="submit" value="Remove Category"></p>
 </form>
