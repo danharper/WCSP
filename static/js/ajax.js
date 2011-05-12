@@ -1,7 +1,7 @@
 //
 // Send an AJAX request via HTTP GET
 //
-ajaxGET = function (url, callback, params = '') {
+ajaxGET = function (url, callback, params) {
 	var xhr, target, changeListener;
 
 	// build url
