@@ -78,6 +78,8 @@ class Basket extends Controller {
 	function destroy() {
 		// clear basket
 		$this->cart->clear();
+		$this->session->add_success("Your basket has been emptied.");
+		$this->redirect('basket');
 		echo 'hey';
 	}
 

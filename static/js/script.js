@@ -1,9 +1,9 @@
-window.onload = function() {
+all_pages = function() {
 	// Oh jQuery, how I miss you...
 
 	var html, main, aside, product_images, product_images_figure, remove_button;
 
-	// console.log("We have liftoff.");
+	console.log("We have liftoff.");
 
 	// swap 'no-js' class on html tag for 'js'
 	html = document.documentElement;

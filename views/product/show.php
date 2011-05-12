@@ -17,11 +17,11 @@
 		} ?>
 	</div>
 
-	<p class="price">£<span id="price"><?php echo number_format($product->price, 2); ?></span></p>
+	<p class="price">£<?php echo number_format($product->price, 2); ?></p>
 	<h2><?php echo $product->title; ?></h2>
 	<p class="description"><?php echo nl2br($product->description); ?></p>
 
-	<form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post">
+	<form action="<?php echo $this->link_to('basket', 'add'); ?>" method="post" id="addtobasket">
 		<h3>Add to Basket:</h3>
 		<?php //if ($product->stock > 0) { ?>
 		<?php
@@ -37,10 +37,10 @@
 				<span class="lowstock">Hurry - only <?php echo $product->stock; ?> left!</span>
 			<?php } ?>
 
-			<input type="hidden" name="id" value="<?php echo $product->id; ?>">
-			<input type="hidden" name="name" value="<?php echo $product->title; ?>">
-			<input type="hidden" name="price" value="<?php echo $product->price; ?>">
-			<input type="submit" <?php if (!$stock_remaining) echo 'disabled'; ?>>
+			<input type="hidden" name="id" value="<?php echo $product->id; ?>" id="product_id">
+			<input type="hidden" name="name" value="<?php echo $product->title; ?>" id="product_name">
+			<input type="hidden" name="price" value="<?php echo $product->price; ?>" id="product_price">
+			<input type="submit" <?php if (!$stock_remaining) echo 'disabled'; ?> id="epicsubmitbtn">
 		<?php } else { ?>
 			<span class="lowstock">Product out of stock.</span>
 		<?php } ?>
