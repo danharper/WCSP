@@ -3,18 +3,21 @@ class Controller {
 	protected $cart;
 	protected $session;
 	protected $payload, $is_home; // used in views
-	protected $js;
+	protected $js, $css;
 
 	function __construct() {
 		$this->cart = new Cart;
 		$this->session = Router::$session;
 		$this->js = array();
+		$css = DB::get("SELECT `css` FROM `options` WHERE `id` = '1'");
+		$this->css = $css->css;
 
 		$this->payload = array(
 			"title" => SITE_TITLE,
 			"navigation" => new Navigation,
 			"cart" => $this->cart,
-			"session" => $this->session
+			"session" => $this->session,
+			"css" => $this->css
 		);
 
 		$this->is_home = (

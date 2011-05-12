@@ -6,6 +6,12 @@
 	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" href="<?php echo ROOT; ?>/static/css/reset.css">
 	<link rel="stylesheet" href="<?php echo ROOT; ?>/static/css/style.css">
+	<?php
+	if ($css != '') {
+		echo '<style>';
+			echo $css;
+		echo '</style>';
+	} ?>
 </head> 
 <body>
 

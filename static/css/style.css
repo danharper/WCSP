@@ -391,7 +391,7 @@ p {
 }
 
 #adminnav li:nth-child(4n) {
-	margin: 0 0 10px 233px;
+	margin: 0 10px 10px 113px;
 }
 
 #basket + .actions {
@@ -511,4 +511,27 @@ p.manageimages {
 
 .stockcounts h3 {
 	margin: 0 0 5px;
+}
+
+#csseditor, #csssuggest {
+	border: 3px double #ddd;
+	height: 140px;
+	padding: 10px;
+	width: 550px;
+	font-size: 13px;
+	line-height: 1.4em;
+	color: #444;
+	font-family: monospace;
+}
+
+#csseditor:focus {
+	border-color: #bbb;
+	outline: none;
+}
+
+#csssuggest {
+	display: block;
+	height: auto;
+	padding: 10px 0;
+	border: none;
 }
