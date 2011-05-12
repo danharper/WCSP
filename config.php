@@ -6,7 +6,7 @@ define('SITE_TITLE', 'Super Mega Awesome Shopping Site');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'webcw');
+define('DB_NAME', '456040');
 
 // Root Path
 define ('ROOT',  dirname($_SERVER['SCRIPT_NAME']));
