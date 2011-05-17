@@ -22,6 +22,9 @@
 </head>
 <body lang="en">
 
+	<p>&nbsp;</p>
+	<p><strong>Scroll through this page, if there are no red error messages, you're good to go! Click the big button at the bottom to get started!</strong></p>
+
 	<?php
 	session_start(); session_unset();
 	require("config.php");
@@ -150,7 +153,7 @@ VALUES
 	}
 	?>
 
-	<h1>All Done!</h1>
+	<h1><a href="index.php">&nbsp;All Done! Let's Begin.&nbsp;</a></h1>
 
 </body>
 </html>
