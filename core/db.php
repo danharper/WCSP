@@ -4,7 +4,11 @@ class DB {
 
 	static function connection() {
 		if (!self::$connection) {
-			self::$connection = new mysqli (DB_HOST, DB_USER, DB_PASS, DB_NAME);
+			self::$connection = @new mysqli (DB_HOST, DB_USER, DB_PASS, DB_NAME);
+			if (self::$connection->connect_error) {
+				header('Location: '. ROOT .'/install.php');
+				die();
+			}
 		}
 		return self::$connection;
 	}
