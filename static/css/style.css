@@ -536,3 +536,42 @@ p.manageimages {
 	padding: 10px 0;
 	border: none;
 }
+
+@media screen and (max-width: 960px) {
+	section.products article:nth-of-type(3n) {
+		margin-right: 20px;
+	}
+	section.products article:nth-of-type(2n) {
+		margin-right: 0;
+	}
+	section#main {
+		width: 460px;
+	}
+	body {
+		width: 717px;
+	}
+	span.lowstock {
+		display: block;
+	}
+	#basket {
+		width: 460px;
+	}
+	#basket .quantity {
+		width: 27%;
+	}
+	#adminnav li {
+		width: 225px;
+	}
+	#adminnav li:nth-child(4n) {
+		margin: 0 10px 10px 0;
+	}
+	#adminnav li:nth-child(2n) {
+		margin-right: 0;
+	}
+	#adminnav li:nth-child(5n) {
+		margin-left: 120px;
+	}
+	#csseditor, #csssuggest {
+		width: 430px;
+	}
+}
