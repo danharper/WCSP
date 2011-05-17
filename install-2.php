@@ -18,25 +18,34 @@
 			text-decoration: none;
 			font-size: 18px;
 		}
+		a.error {
+			background: -webkit-linear-gradient(#f77, #f33);
+			border-color: #f66;
+		}
 	</style>
 </head>
 <body lang="en">
 
-	<p>&nbsp;</p>
-	<p><strong>Scroll through this page, if there are no red error messages, you're good to go! Click the big button at the bottom to get started!</strong></p>
+	<!-- <p>&nbsp;</p> -->
+	<!-- <p><strong>Scroll through this page, if there are no red error messages, you're good to go! Click the big button at the bottom to get started!</strong></p> -->
 
 	<?php
 	session_start(); session_unset();
 	require("config.php");
 
+	$success = 0;
+	$error = 0;
+
 	$db = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
-	echo "<p>Executing query&hellip; <pre>CREATE DATABASE IF NOT EXISTS `456040`</pre></p>";
+	// echo "<p>Executing query&hellip; <pre>CREATE DATABASE IF NOT EXISTS `456040`</pre></p>";
 	$a = mysqli_query($db, "CREATE DATABASE IF NOT EXISTS `456040`");
 	if ($a) {
-		echo "<p style='color: green;'>Success.</p>";
+		// echo "<p style='color: green;'>Success.</p>";
+		$success++;
 	}
 	else {
-		echo '<p style="color: red;">'.mysqli_error($db).'</p>';
+		// echo '<p style="color: red;">'.mysqli_error($db).'</p>';
+		$error++;
 	}
 	$db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -142,18 +151,28 @@ VALUES
 	(7,4,'Yet another epic product','Wowzers, holmes!',383.94,28394)";
 
 	foreach ($queries as $query) {
-		echo "<p>Executing query&hellip; <pre>$query</pre></p>";
+		// echo "<p>Executing query&hellip; <pre>$query</pre></p>";
 		$result = mysqli_query($db, $query);
 		if ($result) {
-			echo "<p style='color: green;'>Success.</p>";
+			// echo "<p style='color: green;'>Success.</p>";
+			$success++;
 		}
 		else {
 			echo "<p style='color: red;'>Error: ". mysqli_error($db) ."</p>";
+			$error++;
 		}
+	}
+
+	if ($error == 0) {
+		echo '<h1><a href="index.php">&nbsp;Installation Complete! Let\'s Begin.&nbsp;</a></h1>';
+		header('Location: '. ROOT .'/index.php');
+		die();
+	}
+	else {
+		echo '<h1><a href="index.php" class="error">&nbsp;There were some errors with the install.&nbsp;</a></h1>';
 	}
 	?>
 
-	<h1><a href="index.php">&nbsp;All Done! Let's Begin.&nbsp;</a></h1>
 
 </body>
 </html>
